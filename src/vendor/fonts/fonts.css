@@ -1,0 +1,19 @@
+@font-face {
+  src:
+    url("./Grtsk/GrtskTera-Light.woff2") format("woff2"),
+    url("./Grtsk/GrtskTera-Light.woff") format("woff");
+  font-family: 'Grtsk';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+}
+
+@font-face {
+  src:
+    url("./Grtsk/GrtskTera-Bold.woff2") format("woff2"),
+    url("./Grtsk/GrtskTera-Bold.woff") format("woff");
+  font-family: 'Grtsk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}  
