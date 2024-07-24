@@ -1,1 +1,4 @@
 @import url(./vendor/normalize.css);
+
+@import url(./components/Main/Main.css);
+@import url(./components/Navbar/Navbar.css);
