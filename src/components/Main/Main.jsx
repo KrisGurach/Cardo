@@ -3,19 +3,18 @@ import Navbar from "../Navbar/Navbar";
 
 export default function Main() {
   return (
-    <main>
-      <section className="main">
-        <img />
-        <h1 className="main__title">Открыта регистрация на национальные и региональные этапы</h1>
-        <button type="button" className="main__button main__button-login">Зарегистрироваться</button>        
+    <main className="main">
+      <section className="main__container">
+        <img className="main__image" src="../../images/main-page-photo.png" alt=""/>
+        <p className="main__title">Открыта регистрация на национальные и региональные этапы</p>
+        <button type="button" className="main__button-login">Зарегистрироваться</button>        
       </section>
-      <section className="main__nav">
         <CountdownTimer />
+      <section className="main__nav">
         <Navbar title="Соревнования"/> 
         <Navbar title="Видеоконкурс"/>
         <Navbar title="Премия"/>
         <Navbar title="Проекты"/>
-        {/* сюда передаем заголовок для построения компонента */}
       </section>
     </main>
   );

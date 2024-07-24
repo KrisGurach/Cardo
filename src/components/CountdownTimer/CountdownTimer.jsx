@@ -33,15 +33,15 @@ const CountdownTimer = () => {
     }, []);
 
     return (
-        <div className='countdown'>
+        <div className='countdown__container'>
             <p className='countdown__title'>До гранд финала</p>
             <div className='countdown__timer-container'>
                 {timeLeft.days !== undefined ? (
                     <div className='countdown__timer'>
-                        <span>{timeLeft.days} дней </span>
-                        <span>{timeLeft.hours} часов </span>
-                        <span>{timeLeft.minutes} минут </span>
-                        <span>{timeLeft.seconds} секунд </span>
+                        <span className='countdown__timer-box countdown__timer-box_white'>{timeLeft.days} дней </span>
+                        <span className='countdown__timer-box'>{timeLeft.hours} &#10; часов </span>
+                        <span className='countdown__timer-box'>{timeLeft.minutes} минут </span>
+                        <span className='countdown__timer-box'>{timeLeft.seconds} секунд </span>
                     </div>
                 ) : (
                     <div className='countdown__end-container'>
