@@ -3,4 +3,5 @@
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts/fonts.css);
 
+@import url(./components/Modal/Modal.css);
 @import url(./components/Navbar/Navbar.css);
