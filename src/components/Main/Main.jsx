@@ -1,12 +1,15 @@
 import {competitions, videocontest, prize, project} from "../../utils/information";
 import CountdownTimer from "../CountdownTimer/CountdownTimer";
+import Header from "../Header/Header";
 import Navbar from "../Navbar/Navbar";
+import Menu from "../Menu/Menu";
 
 export default function Main() {
   return (
     <main className="main">
+      <Header />
       <section className="main__container">
-        <img className="main__image" src="../../images/main-page-photo.png" alt=""/>
+        <img className="main__image" src={require('../../images/main-page-photo.png').default} alt=""/>
         <p className="main__title">Открыта регистрация на национальные и региональные этапы</p>
         <button type="button" className="main__button-login">Зарегистрироваться</button>        
       </section>
@@ -41,6 +44,7 @@ export default function Main() {
           своего проекта!"
           hiddenSection={project}/>
       </section>
+      <Menu />
     </main>
   );
 }
