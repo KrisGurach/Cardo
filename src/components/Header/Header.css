@@ -25,6 +25,7 @@
   height: 40px;
   background-color: transparent;
   background-image: url('../../images/notification.svg');
+  cursor: pointer;
 }
 
 .header__button--notification:active {

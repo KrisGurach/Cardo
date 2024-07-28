@@ -43,19 +43,18 @@
   background-color: transparent;
 }
 
-.menu__picture:hover {
-  color: var(--orange-color); 
-}
-
 .menu__picture-home {
   background-image: url(../../images/home-main-page.svg);
 }
 
+.menu__picture-home_active {
+  background-image: url(../../images/home-main-page-active.svg);
+}
+
 .menu__picture-direction {
-  width: 32px;
-  height: 32px;
   background-image: url(../../images/directions.svg);
-  background-size: cover;
-  background-position: center;
-  background-color: transparent;
+}
+
+.menu__picture-direction_active {
+  background-image: url(../../images/directions-active.svg);
 }

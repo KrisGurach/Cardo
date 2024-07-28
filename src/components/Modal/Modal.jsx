@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Modal({
   title,
@@ -55,11 +56,15 @@ export default function Modal({
               )}
             </div>
           ))}
-          <button className="modal__button modal__button-send">Подать заявку</button>
-          <button className={`modal__button modal__button-know-more ${buttonExtraClass}`}>
-            Узнать больше
-          </button>
-        </div>{" "}
+          <Link to="/application">
+            <button className="modal__button modal__button-send">Подать заявку</button>
+          </Link>
+          <Link to="/information">
+            <button className={`modal__button modal__button-know-more ${buttonExtraClass}`}>
+              Узнать больше
+            </button>
+            </Link>  
+        </div>
       </div>
     </div>
   );
