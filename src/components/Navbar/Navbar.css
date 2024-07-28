@@ -25,4 +25,8 @@
   background-size: cover; 
   background-position: center; 
   border: none;
+  cursor: pointer;
+}
+.navbar__button-link:active {
+  transform: scale(0.9);
 }
