@@ -3,15 +3,18 @@ import CountdownTimer from "../CountdownTimer/CountdownTimer";
 import Header from "../Header/Header";
 import Navbar from "../Navbar/Navbar";
 import Menu from "../Menu/Menu";
+import { Link } from "react-router-dom";
 
 export default function Main() {
   return (
     <main className="main">
       <Header />
       <section className="main__container">
-        <img className="main__image" src={require('../../images/main-page-photo.png').default} alt=""/>
-        <p className="main__title">Открыта регистрация на национальные и региональные этапы</p>
-        <button type="button" className="main__button-login">Зарегистрироваться</button>        
+      <img className="main__image" src={require('../../images/main-page-photo.png')} alt=""/>
+      <p className="main__title">Открыта регистрация на национальные и региональные этапы</p>
+        <Link to="/registration">
+          <button type="button" className="main__button-login">Зарегистрироваться</button>
+        </Link>       
       </section>
         <CountdownTimer />
       <section className="main__nav">

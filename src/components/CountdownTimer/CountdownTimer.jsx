@@ -22,6 +22,21 @@ const CountdownTimer = () => {
         return timeLeft;
     };
 
+    const getTimeString = (value, forms) => {
+        if (value % 10 === 1 && value % 100 !== 11) {
+            return forms[0]; // 1, 21 и т.д.
+        }
+        if (value % 10 >= 2 && value % 10 <= 4 && (value % 100 < 10 || value % 100 >= 20)) {
+            return forms[1]; // 2, 3, 4, 22, 23 и т.д.
+        }
+        return forms[2]; // 0, 5-9 и т.д.
+    };
+
+    const getDaysString = (days) => `${days} ${getTimeString(days, ['день', 'дня', 'дней'])}`;
+    const getHoursString = (hours) => `${hours} ${getTimeString(hours, ['час', 'часа', 'часов'])}`;
+    const getMinutesString = (minutes) => `${minutes} ${getTimeString(minutes, ['минута', 'минуты', 'минут'])}`;
+    const getSecondsString = (seconds) => `${seconds} ${getTimeString(seconds, ['секунда', 'секунды', 'секунд'])}`;
+
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
     useEffect(() => {
@@ -38,10 +53,10 @@ const CountdownTimer = () => {
             <div className='countdown__timer-container'>
                 {timeLeft.days !== undefined ? (
                     <div className='countdown__timer'>
-                        <span className='countdown__timer-box countdown__timer-box_white'>{timeLeft.days} дней </span>
-                        <span className='countdown__timer-box'>{timeLeft.hours} &#10; часов </span>
-                        <span className='countdown__timer-box'>{timeLeft.minutes} минут </span>
-                        <span className='countdown__timer-box'>{timeLeft.seconds} секунд </span>
+                        <span className='countdown__timer-box countdown__timer-box_white'>{getDaysString(timeLeft.days)}</span>
+                        <span className='countdown__timer-box'>{getHoursString(timeLeft.hours)}</span>
+                        <span className='countdown__timer-box'>{getMinutesString(timeLeft.minutes)}</span>
+                        <span className='countdown__timer-box'>{getSecondsString(timeLeft.seconds)}</span>
                     </div>
                 ) : (
                     <div className='countdown__end-container'>

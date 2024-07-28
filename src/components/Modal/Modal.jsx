@@ -1,10 +1,17 @@
 import { useState } from "react";
 
 export default function Modal({ title, description, hiddenSection, handleCloseModal }) {
-  const [isSectionOpen, setIsSectionOpen] = useState(false); 
-  
-  const toggleSection = () => {
-    setIsSectionOpen(!isSectionOpen);
+  // Инициализируем состояние, где каждое значение будет false (все секции закрыты)
+  const [openSections, setOpenSections] = useState(
+    Array(hiddenSection.length).fill(false) // Создаем массив с false для каждой секции
+  ); 
+
+  const toggleSection = (index) => {
+    setOpenSections((prevOpenSections) => {
+      const newOpenSections = [...prevOpenSections];
+      newOpenSections[index] = !newOpenSections[index]; // Переключаем состояние конкретной секции
+      return newOpenSections;
+    });
   };
 
   const buttonExtraClass = title === "Соревнования" || title === "Проекты"
@@ -14,19 +21,16 @@ export default function Modal({ title, description, hiddenSection, handleCloseMo
   return (
     <div className="modal__overlay" onClick={handleCloseModal}>
       <div className="modal__container" onClick={(e) => e.stopPropagation()}>
-        <button
-          className="modal__button-close"
-          onClick={handleCloseModal}
-        ></button>
+        <button className="modal__button-close" onClick={handleCloseModal}></button>
         <h2>{title}</h2>
         <p>{description}</p>
         {hiddenSection.map((x, index) => (
           <div key={index}>
             <h2 className="modal__title">{x.title}</h2>
-            <button onClick={toggleSection} className="modal__button-toggle">
-              {isSectionOpen ? "Скрыть" : "Показать"}
+            <button onClick={() => toggleSection(index)} className="modal__button-toggle">
+              {openSections[index] ? "Скрыть" : "Показать"}
             </button>
-            {isSectionOpen && (
+            {openSections[index] && (
               <div className="modal__description">
                 <p>{x.description}</p>
               </div>
