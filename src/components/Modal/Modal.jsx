@@ -20,11 +20,6 @@ export default function Modal({
     });
   };
 
-  const buttonExtraClass =
-    title === "Соревнования" || title === "Проекты"
-      ? "modal__button-know-more_hidden"
-      : "";
-
   return (
     <div className="modal__overlay" onClick={handleCloseModal}>
       <div className="modal__container" onClick={(e) => e.stopPropagation()}>
@@ -59,11 +54,6 @@ export default function Modal({
           <Link to="/application">
             <button className="modal__button modal__button-send">Подать заявку</button>
           </Link>
-          <Link to="/information">
-            <button className={`modal__button modal__button-know-more ${buttonExtraClass}`}>
-              Узнать больше
-            </button>
-            </Link>  
         </div>
       </div>
     </div>

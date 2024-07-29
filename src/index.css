@@ -4,7 +4,9 @@
 @import url(./vendor/fonts/fonts.css);
 
 @import url(./components/CountdownTimer/CountdownTimer.css);
+@import url(./components/Directions/Directions.css);
 @import url(./components/Header/Header.css);
+@import url(./components/Item/Item.css);
 @import url(./components/Navbar/Navbar.css);
 @import url(./components/Main/Main.css);
 @import url(./components/Menu/Menu.css);
