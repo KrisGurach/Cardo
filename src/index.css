@@ -5,6 +5,7 @@
 
 @import url(./components/CountdownTimer/CountdownTimer.css);
 @import url(./components/Directions/Directions.css);
+@import url(./components/Direction/Direction.css);
 @import url(./components/Header/Header.css);
 @import url(./components/Item/Item.css);
 @import url(./components/Navbar/Navbar.css);

@@ -16,6 +16,11 @@
   height: 242px;
 }
 
+.main__video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
 .main__title {
   margin: 6px 36px 12px;
   padding: 0;
@@ -52,4 +57,13 @@
   justify-content: center; 
   gap: 20px;
   background-color: var(--white-color);
+}
+
+.text_bold {
+  font-weight: 700;
+}
+
+.text_orange {
+  font-weight: 700;
+  color: var(--orange-color);
 }

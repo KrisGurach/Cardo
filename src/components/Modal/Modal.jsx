@@ -9,13 +9,13 @@ export default function Modal({
 }) {
   // Инициализируем состояние, где каждое значение будет false (все секции закрыты)
   const [openSections, setOpenSections] = useState(
-    Array(hiddenSection.length).fill(false) // Создаем массив с false для каждой секции
+    Array(hiddenSection.length).fill(false) 
   );
 
   const toggleSection = (index) => {
     setOpenSections((prevOpenSections) => {
       const newOpenSections = [...prevOpenSections];
-      newOpenSections[index] = !newOpenSections[index]; // Переключаем состояние конкретной секции
+      newOpenSections[index] = !newOpenSections[index]; 
       return newOpenSections;
     });
   };

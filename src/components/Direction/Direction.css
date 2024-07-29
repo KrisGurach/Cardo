@@ -1,0 +1,18 @@
+.direction__image {
+  width: 100%;
+}
+
+.direction__text {
+  margin: 16px 16px 0;  
+  font-size: 14px;
+  font-weight: 200;
+  line-height: 1.4;
+}
+
+.direction__container {  
+  margin: 16px 16px 10px;
+}
+
+.title_gray {
+  color: var(--grey-dark-color);
+}

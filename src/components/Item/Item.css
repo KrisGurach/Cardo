@@ -2,6 +2,7 @@
   margin-top: 16px;
   width: 183px;
   height: 178px;
+  color: var(--black-color);
   display: flex;
   flex-direction: column;
   justify-content: center; 

@@ -12,14 +12,30 @@ export default function Directions() {
         <h3 className="directions__title">Направления</h3>  
       </div>
       <div className="directions__container">
-        <Item src={require('../../images/bmx.png')} alt="человек делает трюки" title="BMX" />
-        <Item src={require('../../images/breaking.png')} alt="человек делает трюки" title="Брейкинг" />
-        <Item src={require('../../images/workout.png')} alt="человек делает трюки" title="Воркаут" />
-        <Item src={require('../../images/graffiti.png')} alt="человек делает трюки" title="Граффити" />
-        <Item src={require('../../images/dj.png')} alt="человек делает трюки" title="Диджеинг" />
-        <Item src={require('../../images/parkur.png')} alt="человек делает трюки" title="Паркур" />
-        <Item src={require('../../images/tricking.png')} alt="человек делает трюки" title="Трикинг" />
-        <Item src={require('../../images/freerun.png')} alt="человек делает трюки" title="Фриран" />
+        <Link to="/directions/bmx" className="directions__link">
+          <Item src={require('../../images/bmx.png')} alt="человек делает трюки" title="BMX" />
+        </Link>
+        <Link to="/directions/breaking" className="directions__link">
+          <Item src={require('../../images/breaking.png')} alt="человек делает трюки" title="Брейкинг" />
+        </Link>
+        <Link to="/directions/workout" className="directions__link">  
+          <Item src={require('../../images/workout.png')} alt="человек делает трюки" title="Воркаут" />
+        </Link>
+        <Link to="/directions/graffiti" className="directions__link">
+          <Item src={require('../../images/graffiti.png')} alt="человек делает трюки" title="Граффити" />
+        </Link>
+        <Link to="/directions/dj" className="directions__link">
+          <Item src={require('../../images/dj.png')} alt="человек делает трюки" title="Диджеинг" />
+        </Link>
+        <Link to="/directions/parkur" className="directions__link">
+          <Item src={require('../../images/parkur.png')} alt="человек делает трюки" title="Паркур" />
+        </Link>
+        <Link to="/directions/tricking" className="directions__link">
+          <Item src={require('../../images/tricking.png')} alt="человек делает трюки" title="Трикинг" />
+        </Link>
+        <Link to="/directions/freerun" className="directions__link">
+          <Item src={require('../../images/freerun.png')} alt="человек делает трюки" title="Фриран" />
+        </Link>
       </div>
       <Menu />
     </div>
