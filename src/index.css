@@ -1,3 +1,6 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
 @import url(./variables/variables.css);
 
 @import url(./vendor/normalize.css);
@@ -7,6 +10,7 @@
 @import url(./components/Directions/Directions.css);
 @import url(./components/Direction/Direction.css);
 @import url(./components/Header/Header.css);
+@import url(./components/ImageSlider/ImageSlider.css);
 @import url(./components/Item/Item.css);
 @import url(./components/Navbar/Navbar.css);
 @import url(./components/Main/Main.css);

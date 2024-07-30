@@ -10,7 +10,7 @@ import frirunPhoto from "../images/frirun-direct.jpg";
 const directionsData = [
   {
     endpoint: "/bmx",
-    image: bmxPhoto,
+    image: [bmxPhoto, frirunPhoto, workoutPhoto],
     description: (
       <>
         <p>
@@ -163,7 +163,7 @@ const directionsData = [
 
   {
     endpoint: "/breaking",
-    image: breakingPhoto,
+    image: [breakingPhoto, trickingPhoto],
     description:
       "Впервые «брейкинг» появился в Бронксе в 1974 году. Этот термин придумал DJ Kool Herk: он называл «би-боями» и «би-гёрл» молодых людей, танцующих под его перкуссионные «брэйксы» на уличных вечеринках в парке Сидар с 1974 года. ",
     hiddenSections: [
@@ -189,7 +189,7 @@ const directionsData = [
 
   {
     endpoint: "/workout",
-    image: workoutPhoto,
+    image: [workoutPhoto, frirunPhoto],
     description:
       "Это история. Воркаут-номинация на КАРДО — это всегда накал страстей, эмоции, яркие и запоминающиеся события. Каждый год мы предлагаем новое и каждый год мы зажигаем огонь. Воркаут-история пишется именно здесь и мы готовы открыть новую главу в этом сезоне.",
     hiddenSections: [
@@ -214,7 +214,7 @@ const directionsData = [
 
   {
     endpoint: "/graffiti",
-    image: graffitiPhoto,
+    image: [graffitiPhoto, trickingPhoto],
     description: (
       <>
         <p>
@@ -252,7 +252,7 @@ const directionsData = [
 
   {
     endpoint: "/dj",
-    image: djPhoto,
+    image: [djPhoto, trickingPhoto, frirunPhoto],
     description: (
       <>
         <p>
@@ -288,7 +288,7 @@ const directionsData = [
 
   {
     endpoint: "/parkur",
-    image: parkurPhoto,
+    image: [parkurPhoto, bmxPhoto, frirunPhoto],
     description: (
       <>
         <p>
@@ -321,7 +321,7 @@ const directionsData = [
 
   {
     endpoint: "/tricking",
-    image: trickingPhoto,
+    image: [trickingPhoto, bmxPhoto, frirunPhoto],
     description: (
       <>
         <p>
@@ -358,7 +358,7 @@ const directionsData = [
 
   {
     endpoint: "/freerun",
-    image: frirunPhoto,
+    image: [frirunPhoto, trickingPhoto],
     description: (
       <p>
         Творческое начало — это то, что объединяет фриран с уличным искусством и

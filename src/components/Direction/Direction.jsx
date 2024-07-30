@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ImageSlider from "../ImageSlider/ImageSlider";
 
 export default function Direction({ images, description, hiddenSection }) {
   const [openSections, setOpenSections] = useState(
@@ -16,7 +17,8 @@ export default function Direction({ images, description, hiddenSection }) {
   return (
     <section className="direction">
       <button className="direction__back-button" onClick={() => window.history.back()}></button>
-      <img className="direction__image" src={images} alt="" />
+      <ImageSlider  images={images} />
+      {/* <img className="direction__image" src={images} alt="" /> */}
       <p className="direction__text">{description}</p>
       <div className="direction__container">
         {hiddenSection.map((x, index) => (
