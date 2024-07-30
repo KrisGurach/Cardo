@@ -5,6 +5,7 @@ import Directions from "../Directions/Directions";
 import Registration from "../Registration/Registration";
 import Direction from "../Direction/Direction";
 import { directionsData } from "../../utils/directions";
+import SignIn from "../SignIn/SignIn";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           );
         })}
         <Route path="/registration" element={<Registration />} />
+        <Route path="/auth" element={<SignIn />} />
       </Routes>
     </div>
   );
