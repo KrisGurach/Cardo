@@ -1,3 +1,8 @@
+.directions {
+  max-height: calc(100vh - 81px); 
+  overflow-y: auto; 
+}
+
 .directions__header {
   min-height: 81px;
   background-color: var(--black-color);
