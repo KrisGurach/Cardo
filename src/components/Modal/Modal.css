@@ -160,6 +160,13 @@
   font-weight: 200;
 }
 
+.modal__container-image {
+  width: 94px;
+  height: 88px;
+}
+
 .modal__hidden-image {
+  width: 94px;
+  height: 88px;
   border-radius: 16px;
 }

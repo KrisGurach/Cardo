@@ -1,5 +1,4 @@
 import bmxPhoto from "../images/bmx-direct.jpg";
-import bmxRiderPhoto from "../images/bmx-rider-photo.jpg";
 import breakingPhoto from "../images/breaking-direct.jpg";
 import workoutPhoto from "../images/workout-direct.jpg";
 import graffitiPhoto from "../images/graffiti-direct.jpg";
@@ -143,7 +142,7 @@ const directionsData = [
         description: (
           <div className="modal__hidden-container">
             <div className="modal__flex-container">
-              <div className="modal__container-grey">
+              <div className="modal__container-image">
                 <img className="modal__hidden-image" src={require("../images/bmx-rider-photo.jpg" )} alt="Федор Забалуев"/>
               </div>  
               <div className="modal__container-text">
