@@ -4,8 +4,15 @@ import Header from "../Header/Header";
 import Navbar from "../Navbar/Navbar";
 import Menu from "../Menu/Menu";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function Main() {
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
+
+  const handleHiddenMenu = (x) => {
+    setIsMenuOpen(x);
+  }
+
   return (
     <main className="main">
       <Header />
@@ -43,6 +50,7 @@ export default function Main() {
             </>
           }
           hiddenSection={competitions}
+          handleHiddenMenu={handleHiddenMenu}
         />
         <Navbar
           title="Видеоконкурс"
@@ -67,6 +75,7 @@ export default function Main() {
             </>
           }
           hiddenSection={videocontest}
+          handleHiddenMenu={handleHiddenMenu}
         />
         <Navbar
           title="Премия"
@@ -74,6 +83,7 @@ export default function Main() {
           лучших сообществ и организации, которые внесли наибольший вклад в развитие конкретного направления уличной культуры и спорта 
           за прошедший год (2023)."
           hiddenSection={prize}
+          handleHiddenMenu={handleHiddenMenu}
         />
         <Navbar
           title="Проекты"
@@ -81,9 +91,10 @@ export default function Main() {
           заявку на получение грантовой поддержки, пройти очную защиту на гранд-финале 22-25 августа и получить деньги на реализацию 
           своего проекта!"
           hiddenSection={project}
+          handleHiddenMenu={handleHiddenMenu}
         />
       </section>
-      <Menu />
+      {isMenuOpen && <Menu />}
     </main>
   );
 }

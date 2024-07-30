@@ -24,7 +24,8 @@
 }
 
 .modal__content {
-  height: 80vh;
+  min-height: 65vh;
+  max-height: 67vh;
   overflow-y: auto;
   box-sizing: border-box;
 }
@@ -99,23 +100,21 @@
   line-height: 1.4;
 }
 
-.modal__button {
+.modal__button-send {
+  margin-top: 20px;
+  margin-left: calc((100% - 328px) / 2);
   padding: 0;
   width: calc(100% - 32px);
   height: 42px;
+  color: var(--white-color);
+  background-color: var(--orange-color);
+  border: none;
   border-radius: 16px;
   cursor: pointer;
 }
 
-.modal__button:active {
+.modal__button-send:active {
   transform: scale(0.9);
-}
-
-.modal__button-send {
-  margin-top: 20px;
-  color: var(--white-color);
-  background-color: var(--orange-color);
-  border: none;
 }
 
 .modal__flex-container {
@@ -144,7 +143,7 @@
   text-align: center;
 }
 
-.modal__container-text {
+.modal__container-hidden-text {
   width: calc(100% - 80px);
   font-size: 10px;
   font-weight: 700;

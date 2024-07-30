@@ -76,7 +76,7 @@ const directionsData = [
               <div className="modal__container-grey">
                 <p className="modal__container-number">01</p>
               </div>
-              <div className="modal__container-text">
+              <div className="modal__container-hidden-text">
                 <p className="modal__text">
                   <strong className="main__text_bold">
                     <strong className="main__text_orange">
@@ -92,7 +92,7 @@ const directionsData = [
               <div className="modal__container-grey">
                 <p className="modal__container-number">02</p>
               </div>
-              <div className="modal__container-text">
+              <div className="modal__container-hidden-text">
                 <p className="modal__text">
                   <strong className="main__text_bold">
                     <strong className="main__text_orange">
@@ -108,7 +108,7 @@ const directionsData = [
               <div className="modal__container-grey">
                 <p className="modal__container-number">03</p>
               </div>
-              <div className="modal__container-text">
+              <div className="modal__container-hidden-text">
                 <p className="modal__text">
                   <strong className="main__text_bold">
                     <strong className="main__text_orange">Эмоции. </strong>{" "}
@@ -122,7 +122,7 @@ const directionsData = [
               <div className="modal__container-grey">
                 <p className="modal__container-number">04</p>
               </div>
-              <div className="modal__container-text">
+              <div className="modal__container-hidden-text">
                 <p className="modal__text">
                   <strong className="main__text_bold">
                     <strong className="main__text_orange">
@@ -145,7 +145,7 @@ const directionsData = [
               <div className="modal__container-image">
                 <img className="modal__hidden-image" src={require("../images/bmx-rider-photo.jpg" )} alt="Федор Забалуев"/>
               </div>  
-              <div className="modal__container-text">
+              <div className="modal__container-hidden-text">
                 <p className="modal__text main__text_bold main__text_orange">
                   Федор Забалуев
                 </p>

@@ -52,7 +52,7 @@ export default function Modal({
             </div>
           ))}
           <Link to="/application">
-            <button className="modal__button modal__button-send">Подать заявку</button>
+            <button className="modal__button-send">Подать заявку</button>
           </Link>
         </div>
       </div>
