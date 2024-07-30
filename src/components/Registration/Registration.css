@@ -26,19 +26,73 @@
   flex-direction: column;
 }
 
-.form__field {
+/* .form__field {
   display: flex;
   justify-content: center;
-}
+} */
+
+.form__field {
+    position: relative;
+    display: flex;
+  justify-content: center;
+
+  }
+  
+  /* .form__input {
+    width: 100%;
+    padding-right: 40px;
+  } */
+  
 
 .form__input {
+    width: 100%;
+    padding-right: 40px;
   margin-bottom: 12px; 
-  padding: 0; 
+  padding: 0;
+  padding-left: 16px; 
   width: calc(100% - 32px);  
   height: 56px;  
   color: var(--grey-dark-color);  
   border: solid 1px var(--grey-dark-color);
   border-radius: 12px;
+}
+
+.form__button-show,
+.form__button-hidden {
+    width: 20px;
+    height: 20px; 
+    padding: 0; 
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: none;
+  position: absolute;
+  right: 16px; /* Положение кнопки справа */
+  top: 42%;
+  transform: translateY(-50%); /* Центрирование кнопки по вертикали */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.form__button-hidden {
+  /* width: 20px;
+  height: 20px;   */
+  background-image: url(../../images/eye-open.svg);
+  /* background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none; */
+}
+
+.form__button-show {
+  /* width: 20px;
+  height: 20px;     */
+  background-image: url(../../images/eye-close.svg);
+  /* background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none; */
 }
 
 .form__container-icon {
