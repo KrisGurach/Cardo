@@ -10,6 +10,7 @@ export default function Registration() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,10 +48,10 @@ export default function Registration() {
           />
           <button
             className={
-              showPassword ? "form__button-hidden" : "form__button-show"
+              showConfirmPassword ? "form__button-hidden" : "form__button-show"
             }
             type="button"
-            onClick={() => setShowPassword(!showPassword)}
+            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
           ></button>
         </div>
         <div className="form__field">
