@@ -1,5 +1,5 @@
 import bmxPhoto from "../images/bmx-direct.jpg";
-import breakingPhoto from "../images/breaking-direct.jpg";
+import breakingPhoto from "../images/breaking-direct.webp";
 import workoutPhoto from "../images/workout-direct.jpg";
 import graffitiPhoto from "../images/graffiti-direct.jpg";
 import djPhoto from "../images/dj-direct.jpg";
@@ -163,7 +163,7 @@ const directionsData = [
 
   {
     endpoint: "/breaking",
-    image: [breakingPhoto, trickingPhoto],
+    image: [breakingPhoto, workoutPhoto],
     description:
       "Впервые «брейкинг» появился в Бронксе в 1974 году. Этот термин придумал DJ Kool Herk: он называл «би-боями» и «би-гёрл» молодых людей, танцующих под его перкуссионные «брэйксы» на уличных вечеринках в парке Сидар с 1974 года. ",
     hiddenSections: [
