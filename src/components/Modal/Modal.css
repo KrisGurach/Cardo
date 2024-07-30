@@ -117,3 +117,49 @@
   background-color: var(--orange-color);
   border: none;
 }
+
+.modal__flex-container {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(170, 170, 170, 0.15);
+  border-radius: 16px;
+}
+
+.modal__container-grey {
+  width: 60px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  background-color: var(--light-grey-color);
+  border-radius: 16px;
+}
+
+.modal__container-number {
+  margin: 0;
+  align-self: center;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.modal__container-text {
+  width: calc(100% - 80px);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.modal__text {
+  margin: 0;
+  margin-left: 4px;
+}
+
+.modal__text_light {
+  font-weight: 200;
+}
+
+.modal__hidden-image {
+  border-radius: 16px;
+}

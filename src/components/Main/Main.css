@@ -61,11 +61,11 @@
   background-color: var(--white-color);
 }
 
-.text_bold {
+.main__text_bold {
   font-weight: 700;
 }
 
-.text_orange {
+.main__text_orange {
   font-weight: 700;
   color: var(--orange-color);
 }
