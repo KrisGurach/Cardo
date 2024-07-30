@@ -3,6 +3,7 @@ import { useState } from "react";
 import vkIcon from '../../images/icon-vk.svg';
 import googleIcon from '../../images/icon-google.svg';
 import appleIcon from '../../images/icon-apple.svg';
+import { Link } from "react-router-dom";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -14,11 +15,13 @@ export default function SignIn() {
   };  
   return (
     <div className="form">
-      <img
-        className="form__logo"
-        src={require("../../images/logotype.png")}
-        alt="логотип, возврат на главную страницу"
-      />
+      <Link to="/">
+        <img
+          className="form__logo"
+          src={require("../../images/logotype.png")}
+          alt="логотип, возврат на главную страницу"
+        />
+      </Link>
       <h3 className="form__title">Войти в аккаунт</h3>
       <form className="form__form" onSubmit={handleSubmit}>
         <div className="form__field">
@@ -71,7 +74,7 @@ export default function SignIn() {
           className="signin__link"
           target="_blank"
         >
-        Зарегистрироваться
+          Зарегистрироваться
         </a>
       </p>
     </div>
