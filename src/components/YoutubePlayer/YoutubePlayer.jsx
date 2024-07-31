@@ -1,27 +1,40 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+import YouTube from 'react-youtube';
 
-const YouTubePlayer = () => {
+const YouTubePlayer = ({ videoId }) => {
+  const playerRef = useRef(null);
+
+  const onPlayerReady = (event) => {
+    playerRef.current = event.target;
+    playerRef.current.playVideo();
+  };
+
+  const opts = {
+    height: '220',
+    width: '380',
+    playerVars: {
+      autoplay: 1, 
+      modestbranding: 1,
+      mute: 1 // обязательно выключаем звук, иначе восрпоизведение будет блочиться
+    },
+  };
+
   useEffect(() => {
-    const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    if (playerRef.current) {
+      playerRef.current.playVideo();
+    }
+  }, [videoId]); 
 
-    window.onYouTubeIframeAPIReady = () => {
-      new window.YT.Player('player', {
-        height: '232',
-        width: '414',
-        videoId: '8bmc-BPvwis',
-        playerVars: {
-          autoplay: 1,
-          controls: 1,
-          mute: 1 
-        },
-      });
-    };
-  }, []);
-
-  return <div id="player" className="main__video"></div>;
+  return (
+    <div> 
+      <YouTube
+        className='main__video'
+        videoId={videoId}
+        opts={opts}
+        onReady={onPlayerReady}
+      />
+    </div>
+  );
 };
 
 export default YouTubePlayer;

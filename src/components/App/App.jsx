@@ -13,20 +13,19 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/directions" element={<Directions />} />
-        {directionsData.map((data) => {
-          return (
-            <Route
-              path={`/directions${data.endpoint}`}
-              element={
-                <Direction
-                  images={data.image}
-                  description={data.description}
-                  hiddenSection={data.hiddenSections}
-                />
-              }
-            />
-          );
-        })}
+        {directionsData.map((data) => (
+          <Route
+            key={data.endpoint}
+            path={`/directions${data.endpoint}`}
+            element={
+              <Direction
+                images={data.image}
+                description={data.description}
+                hiddenSection={data.hiddenSections}
+              />
+            }
+          />
+        ))}
         <Route path="/registration" element={<Registration />} />
         <Route path="/auth" element={<SignIn />} />
       </Routes>

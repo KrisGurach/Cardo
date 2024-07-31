@@ -18,7 +18,7 @@ export default function Main() {
     <main className="main">
       <Header />
       <section className="main__container">
-        <YouTubePlayer />
+        <YouTubePlayer videoId="8bmc-BPvwis" />
         <p className="main__title">
           Открыта регистрация на национальные и региональные этапы
         </p>
