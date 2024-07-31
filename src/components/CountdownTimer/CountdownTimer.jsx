@@ -32,31 +32,62 @@ const CountdownTimer = () => {
         return forms[2]; // 0, 5-9 и т.д.
     };
 
-    const getDaysString = (days) => `${days} ${getTimeString(days, ['день', 'дня', 'дней'])}`;
-    const getHoursString = (hours) => `${hours} ${getTimeString(hours, ['час', 'часа', 'часов'])}`;
-    const getMinutesString = (minutes) => `${minutes} ${getTimeString(minutes, ['минута', 'минуты', 'минут'])}`;
-    const getSecondsString = (seconds) => `${seconds} ${getTimeString(seconds, ['секунда', 'секунды', 'секунд'])}`;
-
+    const getDaysString = (days) => (
+        <>
+            <span>{days}</span>
+            <span>{getTimeString(days, ['день', 'дня', 'дней'])}</span>
+        </>
+    );
+    
+    const getHoursString = (hours) => (
+        <>
+            <span>{hours}</span>
+            <span>{getTimeString(hours, ['час', 'часа', 'часов'])}</span>
+        </>
+    );
+    
+    const getMinutesString = (minutes) => (
+        <>
+            <span>{minutes}</span>
+            <span>{getTimeString(minutes, ['минута', 'минуты', 'минут'])}</span>
+        </>
+    );
+    
+    const getSecondsString = (seconds) => (
+        <>
+            <span>{seconds}</span>
+            <span>{getTimeString(seconds, ['секунда', 'секунды', 'секунд'])}</span>
+        </>
+    );
+    
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-
+    
     useEffect(() => {
         const timer = setInterval(() => {
             setTimeLeft(calculateTimeLeft());
         }, 1000);
-
+    
         return () => clearInterval(timer);
     }, []);
-
+    
     return (
         <div className='countdown__container'>
             <p className='countdown__title'>До гранд финала</p>
             <div className='countdown__timer-container'>
                 {timeLeft.days !== undefined ? (
                     <div className='countdown__timer'>
-                        <span className='countdown__timer-box countdown__timer-box_white'>{getDaysString(timeLeft.days)}</span>
-                        <span className='countdown__timer-box'>{getHoursString(timeLeft.hours)}</span>
-                        <span className='countdown__timer-box'>{getMinutesString(timeLeft.minutes)}</span>
-                        <span className='countdown__timer-box'>{getSecondsString(timeLeft.seconds)}</span>
+                        <span className='countdown__timer-box countdown__timer-box_white'>
+                            {getDaysString(timeLeft.days)}
+                        </span>
+                        <span className='countdown__timer-box'>
+                            {getHoursString(timeLeft.hours)}
+                        </span>
+                        <span className='countdown__timer-box'>
+                            {getMinutesString(timeLeft.minutes)}
+                        </span>
+                        <span className='countdown__timer-box'>
+                            {getSecondsString(timeLeft.seconds)}
+                        </span>
                     </div>
                 ) : (
                     <div className='countdown__end-container'>

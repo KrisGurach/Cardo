@@ -5,6 +5,7 @@ import Navbar from "../Navbar/Navbar";
 import Menu from "../Menu/Menu";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import YouTubePlayer from "../YoutubePlayer/YoutubePlayer";
 
 export default function Main() {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -17,14 +18,7 @@ export default function Main() {
     <main className="main">
       <Header />
       <section className="main__container">
-        <iframe
-          className="main__video"
-          src="https://www.youtube.com/embed/8bmc-BPvwis"
-          title="YouTube video"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+        <YouTubePlayer />
         <p className="main__title">
           Открыта регистрация на национальные и региональные этапы
         </p>
