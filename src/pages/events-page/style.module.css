@@ -1,0 +1,11 @@
+.mainContent {
+  margin: 0;
+  padding: 20px 16px;
+  width: 100%;
+  max-width: 382px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 20px;
+}
