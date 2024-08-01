@@ -1,6 +1,64 @@
+.application {
+  display: flex;
+  flex-direction: column;
+}
+
+.application__title {
+  margin: 39px 0 60px;
+  color: var(--grey-dark-color);
+  align-self: center;
+}
+
 .form__field-checkbox {
   align-self: flex-start;
+  margin: 8px 0 20px 48px;
 }
+
+.form__checkbox {
+  display: flex;
+  align-items: center;
+  color: var(--grey-dark-color);
+  cursor: pointer;
+}
+
+.form__checkbox input {
+  display: none; /* Скрываем стандартный чекбокс */
+}
+
+.form__checkmark {
+  width: 20px;
+  height: 20px;
+  border-radius: 8px; /* Закругляем углы для создания круга */
+  border: 1px solid var(--grey-dark-color); /* Цвет границы */
+  margin-right: 20px; /* Отступ между чекбоксом и текстом */
+  position: relative;
+}
+
+.form__checkbox input:checked + .form__checkmark {
+  /* background-color: #4caf50; /* Цвет фона при выборе */
+ /* border-color: #4caf50; Цвет границы при выборе */
+ background-color: var(--orange-color);
+}
+
+.form__checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.form__checkbox input:checked + .form__checkmark::after {
+  display: block;
+}
+
+/* .checkmark::after {
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0; /* Стиль галочки 
+  transform: rotate(45deg);
+}*/
 
 .form__field-select {
   position: relative;
@@ -15,44 +73,68 @@
   background-repeat: no-repeat;
   background-position: right 10px center;
 }
-/* 
-.custom-select {
-    position: relative;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  } */
+
+.form__input-select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form__input-icon {
+  padding-right: 16px;
+}
   
-  .dropdown-list {
-    position: absolute;
-    top: 355px;
-    left: 0;
-    right: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    padding: 0;
-    margin: 0;
-    list-style: none;
+.form__input-list {
+  position: absolute;
+  top: 445px;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 0;
+  margin: 0 9px;
+  list-style: none;
   }
   
-  .dropdown-item {
-    padding: 10px;
-    cursor: pointer;
+.form__input-list-item {
+  padding: 10px;
+  cursor: pointer;
   }
   
-  .dropdown-item:hover {
-    background-color: var(--orange-color); /* Цвет при наведении */
-  }
+.form__input-list-item:hover {
+  background-color: var(--orange-color);
+}
+
+.form__video {
+  flex-direction: column;
+}
+
+.file-input {
+  display: none; /* Скрываем стандартный input */
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none; /* Оранжевая граница */
+  background-color: var(--orange-color); /* Оранжевый фон */
+  color: white; /* Белый текст */
+  border-radius: 16px; /* Скругленные углы */
+  text-align: center;
+}
+
+.video-preview {
+  margin-top: 10px;
+  width: 100%; /* Ширина 100% */
+  max-height: 200px; /* Максимальная высота */
+  border-radius: 5px; /* Скругленные углы */
+  background-color: #000; /* Черный фон */
+}
   
-  .arrow-icon {
-    width: 16px; /* Ширина стрелки */
-    height: 16px; /* Высота стрелки */
-  }
-  
+.form__button-app {
+  margin-top: 80px;
+}

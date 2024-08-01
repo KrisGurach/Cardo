@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import icon from "../../images/icon-direction-form.svg";
 
 export default function Application() {
   const [firstName, setFirstName] = useState("");
@@ -8,6 +9,7 @@ export default function Application() {
   const [direction, setDirection] = useState("");
   const [video, setVideo] = useState(null);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [videoPreview, setVideoPreview] = useState(null);
 
   const directions = [
     "BMX",
@@ -34,6 +36,17 @@ export default function Application() {
     setDirection(dir);
     setVideo(null);
     setDropdownOpen(false); // Закрываем выпадающий список после выбора
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setVideo(file);
+    if (file) {
+      const url = URL.createObjectURL(file);
+      setVideoPreview(url); // создаем URL для миниатюры
+    } else {
+      setVideoPreview(null);
+    }
   };
 
   return (
@@ -71,48 +84,31 @@ export default function Application() {
           />
         </div>
         <div className="form__field form__field-checkbox">
-          <input
-            className="form__input-checkbox"
-            type="checkbox"
-            checked={noMiddleName}
-            onChange={() => setNoMiddleName(!noMiddleName)}
-          />
-          Нет отчества
+        <label className="form__checkbox">
+            <input
+              type="checkbox"
+              checked={noMiddleName}
+              onChange={() => setNoMiddleName(!noMiddleName)}
+            />
+            <span className="form__checkmark"></span>
+            Нет отчества
+          </label>
         </div>
-        {/* <div className="form__field form__field-select"> */}
         <div
           className="form__field form__field-select"
           onClick={() => setDropdownOpen(!isDropdownOpen)}
         >
-          <div className="form__input">
+          <div className="form__input form__input-select">
             {direction || "Направление"}
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clip-path="url(#clip0_407_1318)">
-                <path
-                  d="M26.6667 16.0002L24.7867 14.1202L17.3333 21.5602V5.3335H14.6667V21.5602L7.22666 14.1068L5.33333 16.0002L16 26.6668L26.6667 16.0002Z"
-                  fill="#FF4310"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_407_1318">
-                  <rect width="32" height="32" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
+            <img className="form__input-icon" src={icon} alt="Открытие выпадающего списка" />
           </div>
         </div>
         {isDropdownOpen && (
-          <ul className="dropdown-list">
+          <ul className="form__input-list">
             {directions.map((dir) => (
               <li
                 key={dir}
-                className="dropdown-item"
+                className="form__input-list-item"
                 onClick={() => handleDirectionSelect(dir)}
               >
                 {dir}
@@ -120,18 +116,28 @@ export default function Application() {
             ))}
           </ul>
         )}
-        {/* </div> */}
         {direction && (
-          <div className="form__field">
-            Добавить видео:
+          <div className="form__field form__video">
+            <label htmlFor="video-upload" className="custom-file-upload">
+              Добавить видео
+            </label>
             <input
+              id="video-upload"
               type="file"
               accept="video/*"
-              onChange={(e) => setVideo(e.target.files[0])}
+              onChange={handleFileChange}
+              className="file-input"
             />
+            {videoPreview && (
+              // Показываем миниатюру видео
+              <video className="video-preview" controls>
+                <source src={videoPreview} type="video/mp4" />
+                Ваш браузер не поддерживает видео.
+              </video>
+            )}
           </div>
         )}
-        <button className="form__button" type="submit">
+        <button className="form__button form__button-app" type="submit">
           Далее
         </button>
       </form>
