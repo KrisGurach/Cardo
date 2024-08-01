@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import { directionsData } from "../../utils/directions";
 import Main from "../Main/Main";
 import Directions from "../Directions/Directions";
 import Registration from "../Registration/Registration";
 import Direction from "../Direction/Direction";
-import { directionsData } from "../../utils/directions";
 import SignIn from "../SignIn/SignIn";
+import Application from "../Application/Application";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         ))}
         <Route path="/registration" element={<Registration />} />
         <Route path="/auth" element={<SignIn />} />
+        <Route path="/application" element={<Application />} />
       </Routes>
     </div>
   );

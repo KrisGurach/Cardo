@@ -1,0 +1,58 @@
+.form__field-checkbox {
+  align-self: flex-start;
+}
+
+.form__field-select {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.form__field-select select {
+  padding: 10px;
+  appearance: none;
+  background-image: url('../../images/icon-direction-form.svg');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+/* 
+.custom-select {
+    position: relative;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  } */
+  
+  .dropdown-list {
+    position: absolute;
+    top: 355px;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .dropdown-item:hover {
+    background-color: var(--orange-color); /* Цвет при наведении */
+  }
+  
+  .arrow-icon {
+    width: 16px; /* Ширина стрелки */
+    height: 16px; /* Высота стрелки */
+  }
+  
