@@ -13,6 +13,14 @@
   justify-content: space-between;
 }
 
+.cardActive {
+  border-color: orangered;
+}
+
+.cardInactive {
+  border-color: grey;
+}
+
 .title {
   margin: 20px 0;
   padding: 0;
@@ -66,4 +74,12 @@
   background-color: orangered;
   border-bottom-right-radius: 16px;
   border-bottom-left-radius: 16px;
+}
+
+.bottomActive {
+  background-color: orangered;
+}
+
+.bottomInactive {
+  background-color: gray;
 }

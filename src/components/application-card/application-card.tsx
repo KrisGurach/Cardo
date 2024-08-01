@@ -9,11 +9,12 @@ export type TApplicationCard = {
   status: string;
   phase: string;
   place?: number;
+  isActive: boolean
 }
 
-const ApplicationCard:FC<TApplicationCard> = ({title, startTime, endingTime, status, phase, place}) => {
+const ApplicationCard:FC<TApplicationCard> = ({title, startTime, endingTime, status, phase, place, isActive}) => {
   return (
-    <div className={style.container}>
+    <div className={`${style.container} ${!isActive ? style.cardInactive : style.cardActive}`}>
       <h2 className={style.title}>{title}</h2>
       <div className={style.infoContainer}>
         <div className={style.info}>
@@ -26,7 +27,7 @@ const ApplicationCard:FC<TApplicationCard> = ({title, startTime, endingTime, sta
           <p className={style.text}>Место:<span className={style.span}>{place && place}{!place && '-'}</span></p>
         </div>
       </div>
-      <div className={style.bottom}>
+      <div className={`${style.bottom} ${!isActive ? style.bottomInactive : style.bottomActive}`}>
 
       </div>
     </div>
