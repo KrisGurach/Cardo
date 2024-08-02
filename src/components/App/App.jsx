@@ -11,9 +11,37 @@ import UploadVideo from "../UploadVideo/UploadVideo";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [videos, setVideos] = useState([]);
+  // const [videos, setVideos] = useState([]);
+
   const [selectedFile, setSelectedFile] = useState(null);
   const [title, setTitle] = useState("");
+  const [videos, setVideos] = useState(() => {
+    // Получаем начальный список видео из localStorage
+    const savedVideos = localStorage.getItem('videos');
+    return savedVideos ? JSON.parse(savedVideos) : [];
+});
+
+useEffect(() => {
+    // Устанавливаем событие для обновления при изменении localStorage
+    const handleStorageChange = () => {
+        const savedVideos = localStorage.getItem('videos');
+        setVideos(savedVideos ? JSON.parse(savedVideos) : []);
+    };
+
+    // Слушаем событие 'storage'
+    window.addEventListener('storage', handleStorageChange);
+    
+    // Возвращаем функцию очистки
+    return () => {
+        window.removeEventListener('storage', handleStorageChange);
+    };
+}, []);
+
+useEffect(() => {
+    // Этот эффект выполняется при загрузке компонента, для первоначального чтения
+    const savedVideos = localStorage.getItem('videos');
+    setVideos(savedVideos ? JSON.parse(savedVideos) : []);
+}, []);
 
   useEffect(() => {
     const savedVideos = JSON.parse(localStorage.getItem("videos")) || [];
