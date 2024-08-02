@@ -1,6 +1,7 @@
 @media (min-width: 320px) {
   .App {
     width: 100%;
+    max-width: 600px;
     font-family: 'Grtsk', 'Arial', 'sans-serif';
     margin: 0;
     padding: 0;

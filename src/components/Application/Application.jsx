@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import icon from "../../images/icon-direction-form.svg";
 import VideoComponent from "../VideoComponent/VideoComponent";
+import { Link } from "react-router-dom";
 
-export default function Application() {
+export default function Application({videos}) {
   const [competition, setCompetition] = useState("");
   const [direction, setDirection] = useState("");
 
@@ -59,17 +60,6 @@ export default function Application() {
   const toggleDropdown = (type) => {
     setDropdownsOpen((prev) => ({ ...prev, [type]: !prev[type] }));
   };
-
-  // const handleFileChange = (e) => {
-  //   const file = e.target.files[0];
-  //   setVideo(file);
-  //   if (file) {
-  //     const url = URL.createObjectURL(file);
-  //     setVideoPreview(url); // создаем URL для миниатюры
-  //   } else {
-  //     setVideoPreview(null);
-  //   }
-  // };
 
   return (
     <section className="application">
@@ -236,34 +226,19 @@ export default function Application() {
           />
         </div>
 
-        {/* Контейнер для видео */}
         <h3 className="form__subtitle">Видео-файл</h3>
-        <div className="form__field form__video">
-          <label
-            htmlFor="video-upload"
-            className="form__button-new-file-upload"
-          >
-            + добавить новое видео
-          </label>
-          <input
-            id="video-upload"
-            type="file"
-            accept="video/*"
-            // onChange={handleFileChange}
-            className="form__file-input"
-          />
-          {/* Уже загруженные видео */}
-          <VideoComponent />
-          {/* {videoPreview && (
-            // Показываем миниатюру видео
-            <video className="video-preview" controls>
-              <source src={videoPreview} type="video/mp4" />
-              Ваш браузер не поддерживает видео.
-            </video>
-          )} */}
+        <div>
+            <Link to="/upload-video" target="blank" className="form__button-new-file-upload">
+              + добавить новое видео
+            </Link>
+            <VideoComponent videos={videos} />
         </div>
 
-        <button className="form__button form__button-app" type="submit">
+        <button 
+          className="form__button form__button-app" 
+          type="submit"
+          // disabled={!direction || !firstName || !lastName || !gender || !birthday || !country || !state || !city}
+          >
           Подать заявку
         </button>
       </form>

@@ -1,6 +1,4 @@
-export default function VideoComponent() {
-  const videos = [];
-
+export default function VideoComponent({videos}) {
   return (
     <div className="video-container">
       {videos.length > 0 ? (
@@ -15,7 +13,7 @@ export default function VideoComponent() {
               <span className="form__checkmark"></span>
             </label>
             <div>
-              <video src={video.url} controls />
+              <video className="video" src={video.url} controls />
             </div>
             <div className="form__title">
               <p className="form__title-video">{video.title}</p>
