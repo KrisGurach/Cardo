@@ -18,7 +18,6 @@ export default function Direction({ images, description, hiddenSection }) {
     <section className="direction">
       <button className="direction__back-button" onClick={() => window.history.back()}></button>
       <ImageSlider  images={images} />
-      {/* <img className="direction__image" src={images} alt="" /> */}
       <p className="direction__text">{description}</p>
       <div className="direction__container">
         {hiddenSection.map((x, index) => (

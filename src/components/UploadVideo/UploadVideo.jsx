@@ -8,7 +8,10 @@ export default function UploadVideo({
 
   return (
     <div className="video-upload">
-      <h3 className="form__subtitle">Добавление видео</h3>
+      <div className="video-upload__title-container">  
+        <button className="direction__back-button video__back-button" onClick={() => window.history.back()}></button>
+        <h3 className="video__subtitle">Добавление видео</h3>
+      </div>
       <form onSubmit={handleSubmit}>
         <input
           id="video-upload"
@@ -18,32 +21,15 @@ export default function UploadVideo({
           className="form__file-input"
         />
 
-        <div
-          className="video-preview"
-          style={{
-            width: "382px",
-            height: "204px",
-            border: "1px solid #ccc",
-            position: "relative",
-          }}
-        >
+        <div>
           {selectedFile ? (
             <video
               src={selectedFile}
               controls
-              style={{ width: "100%", height: "100%" }}
+              style={{ width: "382px", height: "204px", borderRadius: "8px" }}
             />
           ) : (
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                backgroundColor: "#f0f0f0",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+            <div className="video-preview">
               <p>Загрузите видео</p>
             </div>
           )}
@@ -51,7 +37,7 @@ export default function UploadVideo({
 
         <div className="form__field">
           <input
-            className="form__input"
+            className="form__input video__input"
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
