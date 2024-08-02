@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import icon from "../../images/icon-direction-form.svg";
-import VideoComponent from "../VideoComponent/VideoComponent";
 import { Link } from "react-router-dom";
 
-export default function Application({videos}) {
+export default function Application({ videos }) {
   const [competition, setCompetition] = useState("");
   const [direction, setDirection] = useState("");
 
@@ -17,6 +16,8 @@ export default function Application({videos}) {
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
+
+  const [selectedVideoIndex, setSelectedVideoIndex] = useState(null); 
 
   const [dropdownsOpen, setDropdownsOpen] = useState({
     direction: false,
@@ -44,7 +45,7 @@ export default function Application({videos}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ firstName, lastName, middleName, noMiddleName, direction });
+    console.log({ competition, direction, firstName, lastName, middleName, noMiddleName, gender, birthday, country, state, city, selectedVideoIndex }); // Выводим индекс выбранного видео
     // Логика отправки формы
   };
 
@@ -228,17 +229,54 @@ export default function Application({videos}) {
 
         <h3 className="form__subtitle">Видео-файл</h3>
         <div>
-            <Link to="/upload-video" target="blank" className="form__button-new-file-upload">
-              + добавить новое видео
-            </Link>
-            <VideoComponent videos={videos} />
+          <Link
+            to="/upload-video"
+            target="blank"
+            className="form__button-new-file-upload"
+          >
+            + добавить новое видео
+          </Link>
+          <div className="video-component">
+            {videos.length > 0 ? (
+              videos.map((video, index) => (
+                <div key={index} className="video__container">
+                  <label className="form__checkbox video__checkbox">
+                    <input
+                      type="radio" 
+                      checked={selectedVideoIndex === index} 
+                      onChange={() => setSelectedVideoIndex(index)} 
+                    />
+                    <span className="form__checkmark video__checkmark"></span>
+                  </label>
+                  <div>
+                    <video className="video" src={video.url} controls />
+                  </div>
+                  <div className="video__title-container">
+                    <p className="video__title">{video.title}</p>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p>Нет загруженных видео</p>
+            )}
+          </div>
         </div>
 
-        <button 
-          className="form__button form__button-app" 
+        <button
+          className="form__button form__button-app"
           type="submit"
-          // disabled={!direction || !firstName || !lastName || !gender || !birthday || !country || !state || !city}
-          >
+          disabled={
+            !direction ||
+            !firstName ||
+            !lastName ||
+            !gender ||
+            !birthday ||
+            !country ||
+            !state ||
+            !city ||
+            selectedVideoIndex === null 
+          }
+        >
           Подать заявку
         </button>
       </form>
