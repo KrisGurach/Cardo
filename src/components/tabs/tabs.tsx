@@ -1,21 +1,45 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import React from "react";
 import style from './style.module.css';
 
-type TTabs = {
-  tabs: string[];
-}
+import Tab from '../tab/tab';
 
-const Tabs:FC<TTabs> = ({tabs}) =>  {
-  return (
-    <div className={style.tabs}>
-      {tabs.map((tab) => {
-        return (
-          <p className={style.tab}>{tab}</p>
-        )
-      })}
-    </div>
-  );
-}
+export type TabData = {
+	text: string;
+};
+
+export type TabsProps = {
+	tabsData: TabData[];
+	currentTab: string;
+  setCurrentTab: (value: string) => void;
+	onClick: (value: string) => void;
+};
+
+export const Tabs: FC<TabsProps> = ({ tabsData, currentTab, setCurrentTab, onClick }) => {
+	// Изменение currentTab по клику на Tab
+	const handleTabClick = (text: string) => {
+      setCurrentTab(text);
+	};
+
+  // Вызов функции click при изменении currentTab
+  useEffect(() => {
+      onClick(currentTab);
+  }, [currentTab, onClick]);
+
+	return (
+		<ul className={style.tabs}>
+			{tabsData.map((tab, index) => {
+				return (
+					<Tab
+						key={index}
+						text={tab.text}
+						active={currentTab === tab.text}
+						onClick={() => handleTabClick(tab.text)}
+					/>
+				);
+			})}
+		</ul>
+	);
+};
 
 export default Tabs;
