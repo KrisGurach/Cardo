@@ -14,7 +14,7 @@ export type TApplicationCard = {
 
 const ApplicationCard:FC<TApplicationCard> = ({title, startTime, endingTime, status, phase, place, isActive}) => {
   return (
-    <div className={`${style.container} ${!isActive ? style.cardInactive : style.cardActive}`}>
+    <div className={`${style.container} ${!isActive && style.cardInactive}`}>
       <h2 className={style.title}>{title}</h2>
       <div className={style.infoContainer}>
         <div className={style.info}>
@@ -27,7 +27,7 @@ const ApplicationCard:FC<TApplicationCard> = ({title, startTime, endingTime, sta
           <p className={style.text}>Место:<span className={style.span}>{place && place}{!place && '-'}</span></p>
         </div>
       </div>
-      <div className={`${style.bottom} ${!isActive ? style.bottomInactive : style.bottomActive}`}>
+      <div className={`${style.bottom} ${!isActive && style.bottomInactive}`}>
 
       </div>
     </div>
