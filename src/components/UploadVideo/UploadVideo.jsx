@@ -29,8 +29,11 @@ export default function UploadVideo({
 
   return (
     <div className="video-upload">
-      <div className="video-upload__title-container">  
-        <button className="direction__back-button video__back-button" onClick={() => window.history.back()}></button>
+      <div className="video-upload__title-container">
+        <button
+          className="direction__back-button video__back-button"
+          onClick={() => window.history.back()}
+        ></button>
         <h3 className="video__subtitle">Добавление видео</h3>
       </div>
       <form className="video-upload__form" onSubmit={onSubmit}>
@@ -39,12 +42,15 @@ export default function UploadVideo({
           type="file"
           accept="video/*"
           onChange={handleFileChange}
-          className="form__file-input"
+          className="video-upload__file-input"
         />
+        <label htmlFor="video-upload" className="video-upload__custom-file-input">
+          <p className="video-upload__file-input-text">Выбрать видео</p>
+        </label>
 
         <div className="video-upload__container">
           {selectedFile ? (
-            <div className="video-upload__video-wrapper"> {/* Новый контейнер для центрирования видео */}
+            <div className="video-upload__video-wrapper">
               <video
                 src={selectedFile}
                 controls
@@ -53,7 +59,7 @@ export default function UploadVideo({
             </div>
           ) : (
             <div className="video-preview">
-              <p>Загрузите видео</p>
+              <p className="video-preview__text">Загрузи свое крутое видео</p>
             </div>
           )}
         </div>
@@ -62,6 +68,7 @@ export default function UploadVideo({
           <input
             className="form__input video__input"
             type="text"
+            placeholder="Название видео"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
@@ -70,11 +77,18 @@ export default function UploadVideo({
 
         <button
           className="form__button form__button-app"
-          disabled={!selectedFile || !title || loading} 
+          disabled={!selectedFile || !title || loading}
         >
-          {loading ? "Загрузка..." : "Добавить видео"} 
+          {loading ? "Загрузка..." : "Добавить видео"}
         </button>
       </form>
+
+      {loading && (
+        <div className="loading__container">
+          <div className="loading"></div>
+          <p className="loader__text">Загрузка...</p>
+        </div>
+      )}
 
       {showPopup && (
         <div className="popup">
