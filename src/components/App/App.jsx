@@ -10,6 +10,7 @@ import Application from "../Application/Application";
 import UploadVideo from "../UploadVideo/UploadVideo";
 import { useEffect, useState } from "react";
 import ApplicationSuccess from "../ApplicationSuccess/ApplicationSuccess";
+import RegistrationSuccess from "../RegistrationSuccess/RegistrationSuccess";
 
 function App() {
   // const [videos, setVideos] = useState([]);
@@ -96,6 +97,7 @@ useEffect(() => {
           />
         ))}
         <Route path="/registration" element={<Registration />} />
+        <Route path="/registration-success" element={<RegistrationSuccess />} />
         <Route path="/auth" element={<SignIn />} />
         <Route path="/application" element={<Application videos={videos} />} />
         <Route path="/application-success" element={<ApplicationSuccess />} />

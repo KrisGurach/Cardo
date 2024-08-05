@@ -59,7 +59,7 @@ export default function UploadVideo({
             </div>
           ) : (
             <div className="video-preview">
-              <p className="video-preview__text">Загрузи свое крутое видео</p>
+              {/* <p className="video-preview__text">Загрузи свое крутое видео</p> */}
             </div>
           )}
         </div>

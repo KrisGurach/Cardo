@@ -173,9 +173,29 @@
 .video__title {
   margin: 0;
 }
+
+.form__application-link {
+  margin: 0;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
   
 .form__button-app {
-  margin-top: 40px;
+  margin: 0;
+  padding: 0;
+  width: calc(100% - 32px);
+  height: 48px;
+  color: var(--white-color);
+  background-color: var(--orange-color);
+  border: none;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
   cursor: pointer;
 }
 

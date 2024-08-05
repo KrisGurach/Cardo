@@ -86,9 +86,15 @@ export default function Registration() {
             <img src={appleIcon} alt="регистрация через Apple" />
           </button>
         </div>
-        <button className="form__button" type="submit">
-          Зарегистрироваться
-        </button>
+        <Link to="/registration-success" className="form__application-link">
+          <button
+            className="form__button"
+            type="submit"
+            disabled={!email || !password || !confirmPassword}
+          >
+            Зарегистрироваться
+          </button>
+        </Link>
       </form>
       <p className="registration__text">
         Создавая аккаунт ты соглашаешься с{" "}

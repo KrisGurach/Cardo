@@ -20,5 +20,6 @@
 @import url(./components/Modal/Modal.css);
 @import url(./components/Notification/Notification.css);
 @import url(./components/Registration/Registration.css);
+@import url(./components/RegistrationSuccess/RegistrationSuccess.css);
 @import url(./components/SignIn/SignIn.css);
 @import url(./components/UploadVideo/UploadVideo.css);

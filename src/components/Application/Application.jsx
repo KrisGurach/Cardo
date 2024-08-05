@@ -261,9 +261,9 @@ export default function Application({ videos }) {
             )}
           </div>
         </div>
-
+        <Link to='/application-success' className="form__application-link">
         <button
-          className="form__button form__button-app"
+          className="form__button-app"
           type="submit"
           disabled={
             !direction ||
@@ -279,6 +279,7 @@ export default function Application({ videos }) {
         >
           Подать заявку
         </button>
+        </Link>
       </form>
     </section>
   );

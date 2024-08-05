@@ -105,6 +105,12 @@
   font-size: 16px;
   font-weight: 700;
   line-height: 1.5;
+  cursor: pointer;
+}
+
+.form__button:disabled {
+  background-color: var(--grey-dark-color);
+  cursor: auto;
 }
 
 .registration__text {

@@ -1,0 +1,35 @@
+.registration-success {
+  background-color: var(--black-color);
+}
+
+.registration-success__image {
+  margin-bottom: 44px;
+  width: 100%;
+}
+
+.registration-success__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white-color);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.registration-success__main-text {
+  margin: 40px 0 44px;
+  color: var(--orange-color);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.registration-success__text {
+  margin: 0;
+  max-width: 322px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+}
