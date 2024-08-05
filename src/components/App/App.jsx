@@ -9,6 +9,7 @@ import SignIn from "../SignIn/SignIn";
 import Application from "../Application/Application";
 import UploadVideo from "../UploadVideo/UploadVideo";
 import { useEffect, useState } from "react";
+import ApplicationSuccess from "../ApplicationSuccess/ApplicationSuccess";
 
 function App() {
   // const [videos, setVideos] = useState([]);
@@ -69,13 +70,10 @@ useEffect(() => {
       const updatedVideos = [...videos, newVideo];
       setVideos(updatedVideos);
       localStorage.setItem("videos", JSON.stringify(updatedVideos)); // Сохраняем в localStorage
-      console.log("Videos saved to localStorage:", updatedVideos); // Логирование для проверки
 
       // Сбрасываем состояние
       setSelectedFile(null);
       setTitle("");
-    } else {
-      console.log("Video submission failed: missing title or file."); // Проверка условий
     }
   };
 
@@ -100,6 +98,7 @@ useEffect(() => {
         <Route path="/registration" element={<Registration />} />
         <Route path="/auth" element={<SignIn />} />
         <Route path="/application" element={<Application videos={videos} />} />
+        <Route path="/application-success" element={<ApplicationSuccess />} />
         <Route path="/upload-video" element={
           <UploadVideo 
             title={title}
