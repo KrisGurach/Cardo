@@ -26,7 +26,6 @@ const ImageSlider = ({ images }) => {
 };
 
   useEffect(() => {
-    // Обновляем слайдер при изменении размера окна
     window.addEventListener('resize', updateSlider);
     return () => {
         window.removeEventListener('resize', updateSlider);
@@ -34,7 +33,7 @@ const ImageSlider = ({ images }) => {
 }, []);
 
   return (
-    <div style={{ position: 'relative' }}> {/* Обстановка для абсолютного позиционирования дочерних элементов */}
+    <div style={{ position: 'relative' }}> 
       <Slider ref={sliderRef} {...settings}>
         {images.map((image, index) => (
           <div key={index}>
