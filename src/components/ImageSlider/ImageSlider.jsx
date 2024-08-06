@@ -21,19 +21,27 @@ const ImageSlider = ({ images }) => {
 
   const updateSlider = () => {
     if (sliderRef.current) {
-        sliderRef.current.slickGoTo(0);
+      sliderRef.current.slickGoTo(0);
     }
-};
+  };
+
+  const nextSlide = () => {
+    sliderRef.current.slickNext();
+  };
+
+  const prevSlide = () => {
+    sliderRef.current.slickPrev();
+  };
 
   useEffect(() => {
     window.addEventListener('resize', updateSlider);
     return () => {
-        window.removeEventListener('resize', updateSlider);
+      window.removeEventListener('resize', updateSlider);
     };
-}, []);
+  }, []);
 
   return (
-    <div style={{ position: 'relative' }}> 
+    <div style={{ position: 'relative' }}>
       <Slider ref={sliderRef} {...settings}>
         {images.map((image, index) => (
           <div key={index}>
@@ -49,6 +57,10 @@ const ImageSlider = ({ images }) => {
             onClick={() => goToSlide(index)}
           ></span>
         ))}
+      </div>
+      <div className="slider-navigation">
+        <button className="nav-button left" onClick={prevSlide}>◀</button>
+        <button className="nav-button right" onClick={nextSlide}>▶</button>
       </div>
     </div>
   );

@@ -8,6 +8,7 @@
   z-index: 10;
   width: 100%;
 }
+
 .custom-dot {
   width: 120px;
   height: 2px;
@@ -20,4 +21,29 @@
 
 .custom-dot.active {
   background-color: var(--orange-color);
+}
+
+.slider-navigation {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.nav-button {
+  margin: 10px; 
+  padding: 3px;
+  background-color: rgba(255, 255, 255, 0.7); 
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: rgba(255, 67, 16, 0.8);
 }
