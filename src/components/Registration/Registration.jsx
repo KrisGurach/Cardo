@@ -5,9 +5,10 @@ import vkIcon from '../../images/icon-vk.svg';
 import googleIcon from '../../images/icon-google.svg';
 import appleIcon from '../../images/icon-apple.svg';
 import { Link } from 'react-router-dom';
+import auth from '../../utils/Api/AuthApi';
 
-export default function Registration() {
-  const [email, setEmail] = useState("");
+export default function Registration({handleLogin}) {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -15,6 +16,11 @@ export default function Registration() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    auth.signUp({email, password})
+    .then((x) => {
+      console.log(x.token);
+    })
   };
 
   return (
@@ -86,7 +92,7 @@ export default function Registration() {
             <img src={appleIcon} alt="регистрация через Apple" />
           </button>
         </div>
-        <Link to="/registration-success" className="form__application-link">
+        {/* <Link to="/registration-success" className="form__application-link"> */}
           <button
             className="form__button"
             type="submit"
@@ -94,7 +100,7 @@ export default function Registration() {
           >
             Зарегистрироваться
           </button>
-        </Link>
+        {/* </Link> */}
       </form>
       <p className="registration__text">
         Создавая аккаунт ты соглашаешься с{" "}

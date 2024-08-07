@@ -1,19 +1,24 @@
-import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { directionsData } from "../../utils/directions";
-import Main from "../Main/Main";
-import Directions from "../Directions/Directions";
-import Registration from "../Registration/Registration";
-import Direction from "../Direction/Direction";
-import SignIn from "../SignIn/SignIn";
-import Application from "../Application/Application";
-import UploadVideo from "../UploadVideo/UploadVideo";
+
+import { Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
+
+import { directionsData } from "../../utils/directions";
+
+import Application from "../Application/Application";
 import ApplicationSuccess from "../ApplicationSuccess/ApplicationSuccess";
+import Direction from "../Direction/Direction";
+import Directions from "../Directions/Directions";
+import Main from "../Main/Main";
+import Registration from "../Registration/Registration";
 import RegistrationSuccess from "../RegistrationSuccess/RegistrationSuccess";
+import SignIn from "../SignIn/SignIn";
+
+import UploadVideo from "../UploadVideo/UploadVideo";
+import ProtectedRouteElement from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
-  // const [videos, setVideos] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [title, setTitle] = useState("");
@@ -78,6 +83,10 @@ useEffect(() => {
     }
   };
 
+  const handleLogin = () => {
+    setIsLoggedIn(!isLoggedIn);
+    }
+
   return (
     <div className="App">
       <Routes>
@@ -96,13 +105,14 @@ useEffect(() => {
             }
           />
         ))}
-        <Route path="/registration" element={<Registration />} />
+        <Route path="/registration" element={<Registration handleLogin={handleLogin} />} />
         <Route path="/registration-success" element={<RegistrationSuccess />} />
-        <Route path="/auth" element={<SignIn />} />
-        <Route path="/application" element={<Application videos={videos} />} />
-        <Route path="/application-success" element={<ApplicationSuccess />} />
+        <Route path="/auth" element={<SignIn handleLogin={handleLogin}  />} />
+        <Route path="/application" element={<ProtectedRouteElement element={Application} videos={videos} />} />
+        <Route path="/application-success" element={<ProtectedRouteElement element={ApplicationSuccess} />} />
         <Route path="/upload-video" element={
-          <UploadVideo 
+          <ProtectedRouteElement
+            element={UploadVideo} 
             title={title}
             setTitle={setTitle}
             videos={videos} 

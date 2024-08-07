@@ -4,14 +4,20 @@ import vkIcon from '../../images/icon-vk.svg';
 import googleIcon from '../../images/icon-google.svg';
 import appleIcon from '../../images/icon-apple.svg';
 import { Link } from "react-router-dom";
+import auth from "../../utils/Api/AuthApi";
 
-export default function SignIn() {
+export default function SignIn({handleLogin}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    auth.signIn({email, password})
+    .then((x) => {
+      //handleLogin();
+      console.log(x.token);
+    })
   };  
   return (
     <div className="form">
