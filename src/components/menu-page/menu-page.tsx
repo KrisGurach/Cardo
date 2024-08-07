@@ -1,13 +1,9 @@
-import { FC, ReactElement } from "react";
+import { FC } from "react";
 import React from "react";
 import style from './style.module.css';
 import { Link } from "react-router-dom";
 import arrBack from '../../images/arrow_back.svg';
-
-type TMenuPage = {
-  title: string;
-  children?: ReactElement;
-};
+import { TMenuPage } from "../types/types";
 
 const MenuPage:FC<TMenuPage> = ({title, children}) =>  {
   return (

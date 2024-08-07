@@ -3,11 +3,7 @@ import React from "react";
 import style from './style.module.css';
 import arrow from '../../../images/button-navbar-link.svg'
 import { Link } from "react-router-dom";
-
-type TMenuItem = {
-  title: string;
-  link: string;
-}
+import { TMenuItem } from "../../types/types";
 
 const MenuItem:FC<TMenuItem> = ({title, link}) =>  {
   return (

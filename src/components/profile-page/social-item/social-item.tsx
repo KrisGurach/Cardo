@@ -2,11 +2,7 @@ import { FC } from "react";
 import React from "react";
 import style from './style.module.css';
 import { Link } from "react-router-dom";
-
-type TSocialItem = {
-  link: string;
-  icon: string
-}
+import { TSocialItem } from "../../types/types";
 
 const SocialItem:FC<TSocialItem> = ({link, icon}) =>  {
   return (

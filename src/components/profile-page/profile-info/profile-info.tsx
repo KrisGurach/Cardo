@@ -5,12 +5,7 @@ import arrBack from '../../../images/arrow_back.svg';
 import cameraIcon from '../../../images/camera_icon.svg';
 import { Link } from "react-router-dom";
 import { mainPageRoute } from "../../../constants/routes";
-
-type TProfileInfo = {
-  avatar?: string;
-  name: string;
-  tag: string;
-}
+import { TProfileInfo } from "../../types/types";
 
 const ProfileInfo:FC<TProfileInfo> = ({avatar, name, tag}) =>  {
   return (

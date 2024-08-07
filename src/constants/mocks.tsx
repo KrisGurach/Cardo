@@ -33,3 +33,18 @@ export const applicationCardsMock = [
     isActive: false
   },
 ]
+
+export const inputValuesMock = {
+  id: 0,
+  firstName: "Иван",
+  surname: "Иванов",
+  lastName: "Иванович",
+  email: "",
+  birthday: "",
+  phone: "",
+  socialMediaUrl: "",
+  portfolioUrl: "",
+  country: "РФ",
+  city: "",
+  role: ""
+}

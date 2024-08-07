@@ -1,0 +1,42 @@
+.container {
+  margin: 0;
+  padding: 0 12px;
+  max-width: 382px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: black solid 1px;
+  border-radius: 16px;
+  height: 56px;
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-weight: lighter;
+}
+
+.input {
+  margin: 0;
+  padding: 0;
+}
+
+.text {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-weight: lighter;
+  color: darkgrey;
+}
+
+.button {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}

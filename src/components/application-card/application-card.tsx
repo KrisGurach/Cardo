@@ -1,16 +1,7 @@
 import { FC } from "react"
 import React from "react"
 import style from './style.module.css';
-
-export type TApplicationCard = {
-  title: string;
-  startTime: string;
-  endingTime: string;
-  status: string;
-  phase: string;
-  place?: number;
-  isActive: boolean
-}
+import { TApplicationCard } from "../types/types";
 
 const ApplicationCard:FC<TApplicationCard> = ({title, startTime, endingTime, status, phase, place, isActive}) => {
   return (

@@ -1,12 +1,7 @@
 import { FC, useCallback } from 'react';
 import React from 'react';
 import style from './style.module.css';
-
-export type TabProps = {
-	text: string;
-	active: boolean;
-	onClick?: (text: string) => void;
-};
+import { TabProps } from '../types/types';
 
 const Tab: FC<TabProps> = ({ text, active, onClick: handleClick }) => {
 	const onClick = useCallback(() => {

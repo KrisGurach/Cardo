@@ -1,19 +1,8 @@
 import { FC, useEffect } from "react";
 import React from "react";
 import style from './style.module.css';
-
 import Tab from '../tab/tab';
-
-export type TabData = {
-	text: string;
-};
-
-export type TabsProps = {
-	tabsData: TabData[];
-	currentTab: string;
-  setCurrentTab: (value: string) => void;
-	onClick: (value: string) => void;
-};
+import { TabsProps } from "../types/types";
 
 export const Tabs: FC<TabsProps> = ({ tabsData, currentTab, setCurrentTab, onClick }) => {
 	// Изменение currentTab по клику на Tab

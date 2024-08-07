@@ -3,16 +3,8 @@ import React from "react";
 import style from './style.module.css';
 import MenuPage from "../../components/menu-page/menu-page";
 import Tabs from "../../components/tabs/tabs";
-import ApplicationCard, { TApplicationCard } from "../../components/application-card/application-card";
-
-type TEventPage = {
-  cards: TApplicationCard[]
-}
-
-export enum TabsTypes {
-  ACTIVE = "Активные",
-	FINISHED = "Завершённые"
-}
+import ApplicationCard from "../../components/application-card/application-card";
+import { TabsTypes, TEventPage } from "../../components/types/types";
 
 const EventsPage:FC<TEventPage> = ({cards}) =>  {
 
