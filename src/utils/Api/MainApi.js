@@ -13,8 +13,70 @@ class MainApi {
   
     _getToken = () => `Bearer ${localStorage.getItem("token")}`;
 
-    
+    uploadVideo = ({ id, file, title }) => {
+      return this._request(`/user/${id}/upload`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: this._getToken(),
+        },
+        body: JSON.stringify({
+          file: file,
+          title: title,
+        }),
+      });
+    };
 
+    getUser = (id) => {
+      return this._request(`/user/${id}`, {
+        method: "GET",
+        headers: {
+          authorization: this._getToken(),
+        },
+      });
+    };
+
+    updateUser = ({ id, firstname, name, middlname, gender, birthday, country, state, city, phone, email, portfolioURL, socialMediaURl}) => {
+      return this._request(`/user/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: this._getToken(),
+        },
+        body: JSON.stringify({
+          firstname: firstname,
+          name: name,
+          middlname: middlname,
+          gender: gender,
+          birthday: birthday,
+          country: country,
+          state: state,
+          city: city,
+          phone: phone,
+          email: email, 
+          portfolioURL: portfolioURL,
+          socialMediaURl: socialMediaURl,
+        }),
+      });
+    };
+
+    getVideo = ({userId, videoId}) => {
+      return this._request(`/user/${userId}/videos/${videoId}`, {
+        method: "GET",
+        headers: {
+          authorization: this._getToken(),
+        },
+      });
+    };
+
+    getAllVideos = (id) => {
+      return this._request(`/user/${id}/videos`, {
+        method: "GET",
+        headers: {
+          authorization: this._getToken(),
+        },
+      });
+    };
 }
 
 const config = {
