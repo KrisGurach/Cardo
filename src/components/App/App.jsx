@@ -47,14 +47,17 @@ useEffect(() => {
 
 useEffect(() => {
     // Этот эффект выполняется при загрузке компонента, для первоначального чтения
-    const savedVideos = localStorage.getItem('videos');
-    setVideos(savedVideos ? JSON.parse(savedVideos) : []);
+    // const savedVideos = localStorage.getItem('videos');
+    // setVideos(savedVideos ? JSON.parse(savedVideos) : []);
+  mainApi.getAllVideos()
+      .then((videoArray) => {
+          const newVideos = videoArray.map((v) => ({ 
+            title: v.title,
+            url: v.videoPath 
+          }));
+          setVideos(newVideos);
+      })
 }, []);
-
-  useEffect(() => {
-    const savedVideos = JSON.parse(localStorage.getItem("videos")) || [];
-    setVideos(savedVideos);
-  }, []);
   
   const handleFileChange = (event) => {
     const file = event.target.files[0];

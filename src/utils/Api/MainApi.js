@@ -17,7 +17,7 @@ class MainApi {
       return this._request(`/user/upload`, {
         method: "POST",
         headers: {
-          // "Content-Type": "application/json",
+          // "Content-Type": "multipart/form-data",
           authorization: this._getToken(),
         },
         body: formDataFile,
@@ -66,8 +66,8 @@ class MainApi {
       });
     };
 
-    getAllVideos = (id) => {
-      return this._request(`/user/${id}/videos`, {
+    getAllVideos = () => {
+      return this._request(`/user/videos`, {
         method: "GET",
         headers: {
           authorization: this._getToken(),
