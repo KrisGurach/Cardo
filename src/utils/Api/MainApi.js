@@ -13,17 +13,14 @@ class MainApi {
   
     _getToken = () => `Bearer ${localStorage.getItem("token")}`;
 
-    uploadVideo = ({ id, file, title }) => {
-      return this._request(`/user/${id}/upload`, {
+    uploadVideo = ({ formDataFile, title }) => {
+      return this._request(`/user/upload`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          // "Content-Type": "application/json",
           authorization: this._getToken(),
         },
-        body: JSON.stringify({
-          file: file,
-          title: title,
-        }),
+        body: formDataFile,
       });
     };
 
@@ -80,7 +77,7 @@ class MainApi {
 }
 
 const config = {
-    baseUrl: "https://localhost:8080",
+    baseUrl: "https://1a0188d5-333c-4d55-ac99-7fa84dab4afe.mock.pstmn.io",
   };
   
   const mainApi = new MainApi(config);

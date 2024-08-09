@@ -15,11 +15,14 @@ export default function UploadVideo({
     e.preventDefault();
     setLoading(true);
     
-    // Здесь handleSubmit для загрузки
-    await handleSubmit(e);
-
-    setLoading(false);
-    setShowPopup(true);
+    try {
+      // Здесь handleSubmit для загрузки
+      await handleSubmit(e);
+      setShowPopup(true);
+    }
+    finally {
+      setLoading(false);
+    }
   };
 
   const closePopup = () => {

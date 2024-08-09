@@ -16,6 +16,7 @@ import SignIn from "../SignIn/SignIn";
 
 import UploadVideo from "../UploadVideo/UploadVideo";
 import ProtectedRouteElement from "../ProtectedRoute/ProtectedRoute";
+import mainApi from "../../utils/Api/MainApi";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -71,15 +72,27 @@ useEffect(() => {
     event.preventDefault();
     console.log("Submitting video:", { title, url: selectedFile }); // Логирование для проверки
 
-    if (selectedFile && title) {
-      const newVideo = { title, url: selectedFile };
-      const updatedVideos = [...videos, newVideo];
-      setVideos(updatedVideos);
-      localStorage.setItem("videos", JSON.stringify(updatedVideos)); // Сохраняем в localStorage
+    const inputId = 'video-upload';
+    const inputElement = event.target.querySelector(`#${inputId}`);
+    const file = inputElement.files[0];
 
-      // Сбрасываем состояние
-      setSelectedFile(null);
-      setTitle("");
+    if (file && selectedFile && title) {
+      const formData = new FormData();
+      formData.append(title, file);
+
+      mainApi
+        .uploadVideo(formData, title)
+        .then((_) => {
+          const newVideo = { title, url: selectedFile };
+          const updatedVideos = [...videos, newVideo];
+          setVideos(updatedVideos);
+          localStorage.setItem("videos", JSON.stringify(updatedVideos)); // Сохраняем в localStorage
+        })
+        .finally((_) => {
+          // Сбрасываем состояние
+          setSelectedFile(null);
+          setTitle("");
+        });
     }
   };
 
