@@ -4,10 +4,12 @@ import React, { useState } from 'react';
 import vkIcon from '../../images/icon-vk.svg';
 import googleIcon from '../../images/icon-google.svg';
 import appleIcon from '../../images/icon-apple.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../utils/Api/AuthApi';
 
 export default function Registration({handleLogin}) {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -17,10 +19,17 @@ export default function Registration({handleLogin}) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    auth.signUp({email, password})
-    .then((x) => {
-      console.log(x.token);
+    auth.signUp({ email, password })
+    .then(() => {
+      auth.signIn(email, password)
+      .then(() => {
+        handleLogin();
+        setPassword("");
+        setEmail("");
+        navigate("/", { replace: true });
+      });
     })
+    .catch((err) => console.error(err))
   };
 
   return (

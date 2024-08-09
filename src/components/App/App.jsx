@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { directionsData } from "../../utils/directions";
@@ -17,8 +17,12 @@ import SignIn from "../SignIn/SignIn";
 import UploadVideo from "../UploadVideo/UploadVideo";
 import ProtectedRouteElement from "../ProtectedRoute/ProtectedRoute";
 import mainApi from "../../utils/Api/MainApi";
+import auth from "../../utils/Api/AuthApi";
 
 function App() {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [selectedFile, setSelectedFile] = useState(null);
@@ -28,6 +32,10 @@ function App() {
     const savedVideos = localStorage.getItem('videos');
     return savedVideos ? JSON.parse(savedVideos) : [];
 });
+
+useEffect(() => {
+  handleTokenCheck();
+}, []);
 
 useEffect(() => {
     // Устанавливаем событие для обновления при изменении localStorage
@@ -100,8 +108,36 @@ useEffect(() => {
   };
 
   const handleLogin = () => {
-    setIsLoggedIn(!isLoggedIn);
+    if (!isLoggedIn) {
+      handleTokenCheck();
+      return;
     }
+
+    setIsLoggedIn(!isLoggedIn);
+  };
+
+  const handleTokenCheck = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      auth
+        .checkToken(token)
+        .then((res) => {
+          if (res) {
+            setIsLoggedIn(true);
+
+            const loginRoutes = [
+              "/auth",
+              "/register"
+            ];
+            const path = loginRoutes.includes(pathname)
+              ? "/"
+              : pathname;
+            navigate(path, { replace: true });
+          }
+        })
+        .catch(console.error);
+    }
+  };
 
   return (
     <div className="App">
@@ -124,8 +160,8 @@ useEffect(() => {
         <Route path="/registration" element={<Registration handleLogin={handleLogin} />} />
         <Route path="/registration-success" element={<RegistrationSuccess />} />
         <Route path="/auth" element={<SignIn handleLogin={handleLogin}  />} />
-        <Route path="/application" element={<ProtectedRouteElement element={Application} videos={videos} />} />
-        <Route path="/application-success" element={<ProtectedRouteElement element={ApplicationSuccess} />} />
+        <Route path="/application" element={<ProtectedRouteElement element={Application} videos={videos} isLoggedIn={isLoggedIn} />} />
+        <Route path="/application-success" element={<ProtectedRouteElement element={ApplicationSuccess} isLoggedIn={isLoggedIn} />} />
         <Route path="/upload-video" element={
           <ProtectedRouteElement
             element={UploadVideo} 
@@ -137,6 +173,7 @@ useEffect(() => {
             handleSubmit={handleSubmit} 
             selectedFile={selectedFile} 
             setSelectedFile={setSelectedFile} 
+            isLoggedIn={isLoggedIn}
           />
         } />
       </Routes>

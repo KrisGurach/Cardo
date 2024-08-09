@@ -3,21 +3,26 @@ import { useState } from "react";
 import vkIcon from '../../images/icon-vk.svg';
 import googleIcon from '../../images/icon-google.svg';
 import appleIcon from '../../images/icon-apple.svg';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../../utils/Api/AuthApi";
 
 export default function SignIn({handleLogin}) {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    auth.signIn({email, password})
-    .then((x) => {
-      //handleLogin();
-      console.log(x.token);
+    auth.signIn(email, password)
+    .then(() => {
+      handleLogin();
+      setPassword("");
+      setEmail("");
+      navigate("/", { replace: true });
     })
+    .catch(console.error)
   };  
   return (
     <div className="form">
@@ -76,9 +81,9 @@ export default function SignIn({handleLogin}) {
       </form>
       <p className="registration__text">
         <a
-          href="https://localhost/registration"
+          href="http://localhost:3000/registration"
           className="signin__link"
-          target="_blank"
+          // target="_blank"
         >
           Зарегистрироваться
         </a>

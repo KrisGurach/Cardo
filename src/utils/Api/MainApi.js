@@ -77,8 +77,8 @@ class MainApi {
 }
 
 const config = {
-    baseUrl: "https://1a0188d5-333c-4d55-ac99-7fa84dab4afe.mock.pstmn.io",
-  };
+  baseUrl: "http://51.250.32.130:8080",
+};
   
   const mainApi = new MainApi(config);
   
