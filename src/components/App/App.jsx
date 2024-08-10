@@ -32,6 +32,7 @@ function App() {
     const savedVideos = localStorage.getItem('videos');
     return savedVideos ? JSON.parse(savedVideos) : [];
 });
+  const [userId, setUserId] = useState();
 
 useEffect(() => {
   handleTokenCheck();
@@ -57,7 +58,11 @@ useEffect(() => {
     // Этот эффект выполняется при загрузке компонента, для первоначального чтения
     // const savedVideos = localStorage.getItem('videos');
     // setVideos(savedVideos ? JSON.parse(savedVideos) : []);
-  mainApi.getAllVideos()
+    if (!userId) {
+      return;
+    }
+  
+    mainApi.getAllVideos()
       .then((videoArray) => {
           const newVideos = videoArray.map((v) => ({ 
             title: v.title,
@@ -65,7 +70,7 @@ useEffect(() => {
           }));
           setVideos(newVideos);
       })
-}, []);
+}, [userId]);
   
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -79,7 +84,7 @@ useEffect(() => {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("Submitting video:", { title, url: selectedFile }); // Логирование для проверки
 
@@ -87,25 +92,51 @@ useEffect(() => {
     const inputElement = event.target.querySelector(`#${inputId}`);
     const file = inputElement.files[0];
 
+    let error = "";
+
     if (file && selectedFile && title) {
       const formData = new FormData();
-      formData.append(title, file);
+      formData.append("file", file);
+      formData.append("title", title);
 
-      mainApi
-        .uploadVideo(formData, title)
-        .then((_) => {
-          const newVideo = { title, url: selectedFile };
-          const updatedVideos = [...videos, newVideo];
-          setVideos(updatedVideos);
-          localStorage.setItem("videos", JSON.stringify(updatedVideos)); // Сохраняем в localStorage
-        })
-        .finally((_) => {
-          // Сбрасываем состояние
-          setSelectedFile(null);
-          setTitle("");
-        });
+      try {
+        await mainApi.uploadVideo(formData);
+
+        const newVideo = { title, url: selectedFile };
+        const updatedVideos = [...videos, newVideo];
+        setVideos(updatedVideos);
+        localStorage.setItem("videos", JSON.stringify(updatedVideos)); // Сохраняем в localStorage
+      } catch (err) {
+        error = err;
+      } finally {
+        // Сбрасываем состояние
+        setSelectedFile(null);
+        setTitle("");
+      }
     }
-  };
+    
+    return error;
+  };    
+      // mainApi
+      //   .uploadVideo(formData)
+      //   .then(() => {
+      //     const newVideo = { title, url: selectedFile };
+      //     const updatedVideos = [...videos, newVideo];
+      //     setVideos(updatedVideos);
+      //     localStorage.setItem("videos", JSON.stringify(updatedVideos)); // Сохраняем в localStorage
+      //   })
+      //   .catch((err) => {
+      //     error = err;
+      //   })
+      //   .finally(() => {
+      //     // Сбрасываем состояние
+      //     setSelectedFile(null);
+      //     setTitle("");
+      //   });
+
+    //   return isSuccess ? Promise.resolve() : Promise.reject(error);
+    // }
+  // };
 
   const handleLogin = () => {
     if (!isLoggedIn) {
@@ -124,10 +155,11 @@ useEffect(() => {
         .then((res) => {
           if (res) {
             setIsLoggedIn(true);
+            setUserId(res.id);
 
             const loginRoutes = [
               "/auth",
-              "/register"
+              "/registration"
             ];
             const path = loginRoutes.includes(pathname)
               ? "/"

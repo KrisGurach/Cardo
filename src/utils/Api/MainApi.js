@@ -13,11 +13,10 @@ class MainApi {
   
     _getToken = () => `Bearer ${localStorage.getItem("token")}`;
 
-    uploadVideo = ({ formDataFile, title }) => {
+    uploadVideo = (formDataFile) => {
       return this._request(`/user/upload`, {
         method: "POST",
         headers: {
-          // "Content-Type": "multipart/form-data",
           authorization: this._getToken(),
         },
         body: formDataFile,
