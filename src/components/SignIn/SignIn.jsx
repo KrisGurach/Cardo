@@ -64,17 +64,6 @@ export default function SignIn({handleLogin}) {
             onClick={() => setShowPassword(!showPassword)}
           ></button>
         </div>
-        <div className="form__container-icon">
-          <button className="form__button-by-network">
-            <img src={vkIcon} alt="регистрация через ВКонтакте" />
-          </button>
-          <button className="form__button-by-network">
-            <img src={googleIcon} alt="регистрация через Google" />
-          </button>
-          <button className="form__button-by-network">
-            <img src={appleIcon} alt="регистрация через Apple" />
-          </button>
-        </div>
         <button className="form__button signin__button" type="submit">
           Войти
         </button>

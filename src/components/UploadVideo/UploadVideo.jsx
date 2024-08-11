@@ -29,11 +29,6 @@ export default function UploadVideo({
       } finally {
         setLoading(false);
       }
-      
-      // handleSubmit(e)
-      //   .then(() => setShowPopup(true))
-      //   .catch(console.error)
-      //   .finally(() => setLoading(false));
   };
 
   const closePopup = () => {

@@ -18,6 +18,7 @@ import UploadVideo from "../UploadVideo/UploadVideo";
 import ProtectedRouteElement from "../ProtectedRoute/ProtectedRoute";
 import mainApi from "../../utils/Api/MainApi";
 import auth from "../../utils/Api/AuthApi";
+import compressor from "../../utils/Helpers/Compressor";
 
 function App() {
   const navigate = useNavigate();
@@ -95,8 +96,10 @@ useEffect(() => {
     let error = "";
 
     if (file && selectedFile && title) {
+      const compressedFile = await compressor.compressVideo(file, title);
+
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append("file", compressedFile, `${title}.zip`);
       formData.append("title", title);
 
       try {

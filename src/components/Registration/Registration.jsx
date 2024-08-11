@@ -90,17 +90,6 @@ export default function Registration({handleLogin}) {
             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
           ></button>
         </div>
-        <div className="form__container-icon">
-          <button className="form__button-by-network">
-            <img src={vkIcon} alt="регистрация через ВКонтакте" />
-          </button>
-          <button className="form__button-by-network">
-            <img src={googleIcon} alt="регистрация через Google" />
-          </button>
-          <button className="form__button-by-network">
-            <img src={appleIcon} alt="регистрация через Apple" />
-          </button>
-        </div>
         {/* <Link to="/registration-success" className="form__application-link"> */}
           <button
             className="form__button"

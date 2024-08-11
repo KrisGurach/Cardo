@@ -73,26 +73,6 @@
   background-image: url(../../images/eye-close.svg);
 }
 
-.form__container-icon {
-  margin-top: 64px;  
-  margin-bottom: 124px;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-}
-
-.form__button-by-network {
-  margin: 0;
-  padding: 0;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.form__button-by-network:active {
-  transform: scale(0.9);
-}
-
 .form__button {
   margin-bottom: 62px;  
   width: calc(100% - 32px);  
