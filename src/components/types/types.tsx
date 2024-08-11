@@ -20,7 +20,7 @@ export type TEventPage = {
 }
 
 export type TFieldset = {
-  title: string;
+  title?: string;
   inputs: {
     name: string;
     label: string;
@@ -46,12 +46,15 @@ export type TInputValues = {
 
 export type TFormData = {
   data: TFieldset[]
-  inputValues: TInputValues
+  inputValues?: TInputValues
+  defaultValues?: any
 }
 
 export type TMenuPage = {
   title: string;
   children?: ReactElement;
+  extraClass?: string;
+  link?: string;
 };
 
 export type TMenuItem = {

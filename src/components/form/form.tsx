@@ -3,10 +3,10 @@ import React from "react";
 import style from './style.module.css';
 import { TFormData, TInputValues } from "../types/types";
 
-const Form:FC<TFormData> = ({data, inputValues}) =>  {
+const Form:FC<TFormData> = ({data, inputValues, defaultValues}) =>  {
 
   const [values, setValues] = useState<TInputValues>({
-    ...inputValues
+    ...inputValues || defaultValues
 	});
 
 	const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
