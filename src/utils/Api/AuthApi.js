@@ -35,10 +35,11 @@ class Authorization {
           email: email,
         }),
       }).then((data) => {
-        if (data.token) {
-          localStorage.setItem("token", data.token);
+        if (data.accessToken) {
+          localStorage.setItem("token", data.accessToken);
           return data;
         }
+        throw new Error("В ответе на запрос регистрации отсутствует токен.")
       });
     };
   

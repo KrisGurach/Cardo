@@ -8,7 +8,11 @@ class MainApi {
     }
   
     _getResponseData = (res) => {
-      return res.ok ? res.json() : Promise.reject(res.status);
+      if (!res.ok) {
+        return Promise.reject(res.status);
+      }
+
+      return res.status === 200 ? res.json() : Promise.resolve();
     };
   
     _getToken = () => `Bearer ${localStorage.getItem("token")}`;
@@ -32,26 +36,22 @@ class MainApi {
       });
     };
 
-    updateUser = ({ id, firstname, name, middlname, gender, birthday, country, state, city, phone, email, portfolioURL, socialMediaURl}) => {
-      return this._request(`/user/${id}`, {
+    updateUser = ({ firstName, lastName, middleName, gender, birthday, country, state, city }) => {
+      return this._request(`/user`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
           authorization: this._getToken(),
         },
         body: JSON.stringify({
-          firstname: firstname,
-          name: name,
-          middlname: middlname,
+          firstName: firstName,
+          surname: lastName,
+          patronimic: middleName,
           gender: gender,
           birthday: birthday,
           country: country,
           state: state,
           city: city,
-          phone: phone,
-          email: email, 
-          portfolioURL: portfolioURL,
-          socialMediaURl: socialMediaURl,
         }),
       });
     };
@@ -73,6 +73,21 @@ class MainApi {
         },
       });
     };
+
+    getAllEvents = () => {
+      return this._request("/public/events/all", {
+        method: "GET",
+      })
+    }
+
+    sendApplication = (eventId) => {
+      return this._request(`/requests/event/${eventId}`, {
+        method: "POST",
+        headers: {
+          authorization: this._getToken(),
+        },
+      })
+    }
 }
 
 const config = {

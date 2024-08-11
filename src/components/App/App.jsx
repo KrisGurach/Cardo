@@ -19,6 +19,7 @@ import ProtectedRouteElement from "../ProtectedRoute/ProtectedRoute";
 import mainApi from "../../utils/Api/MainApi";
 import auth from "../../utils/Api/AuthApi";
 import compressor from "../../utils/Helpers/Compressor";
+import { renderToStaticMarkup } from "react-dom/server";
 
 function App() {
   const navigate = useNavigate();
@@ -62,15 +63,17 @@ useEffect(() => {
     if (!userId) {
       return;
     }
-  
-    mainApi.getAllVideos()
-      .then((videoArray) => {
-          const newVideos = videoArray.map((v) => ({ 
+
+      mainApi.getAllVideos().then((videoArray) => {
+        const newVideos = videoArray.map(async (v) => {
+          const fileUrl = await compressor.decompress(v.videoPath);
+          return {
             title: v.title,
-            url: v.videoPath 
-          }));
-          setVideos(newVideos);
-      })
+            url: fileUrl,
+          };
+        });
+        setVideos(newVideos);
+      });
 }, [userId]);
   
   const handleFileChange = (event) => {
@@ -96,7 +99,7 @@ useEffect(() => {
     let error = "";
 
     if (file && selectedFile && title) {
-      const compressedFile = await compressor.compressVideo(file, title);
+      const compressedFile = await compressor.compress(file, title);
 
       const formData = new FormData();
       formData.append("file", compressedFile, `${title}.zip`);

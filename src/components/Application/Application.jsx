@@ -1,21 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import icon from "../../images/icon-direction-form.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import mainApi from "../../utils/Api/MainApi";
 
 export default function Application({ videos }) {
-  const [competition, setCompetition] = useState("");
+  const navigate = useNavigate();
+
+  const [competition, setCompetition] = useState({});
   const [direction, setDirection] = useState("");
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [middleName, setMiddleName] = useState("");
+  const [userData, setUserData] = useState({});
   const [noMiddleName, setNoMiddleName] = useState(false);
-  const [gender, setGender] = useState("");
-  const [birthday, setBirthday] = useState("");
-  
-  const [country, setCountry] = useState("");
-  const [state, setState] = useState("");
-  const [city, setCity] = useState("");
 
   const [selectedVideoIndex, setSelectedVideoIndex] = useState(null); 
 
@@ -23,6 +18,17 @@ export default function Application({ videos }) {
     direction: false,
     gender: false, 
   });
+
+  useEffect(() => {
+    mainApi.getAllEvents().then((competitionData) => {
+      const first = competitionData[0] ?? {id: 1, name: "Произвольное событие"};
+
+      setCompetition({
+        id: first.id,
+        name: first.name,
+      });
+    });
+  }, []);
 
   const directions = [
     "BMX",
@@ -43,17 +49,39 @@ export default function Application({ videos }) {
     "женский"
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ competition, direction, firstName, lastName, middleName, noMiddleName, gender, birthday, country, state, city, selectedVideoIndex }); // Выводим индекс выбранного видео
+
     // Логика отправки формы
+    try {
+      await mainApi.sendApplication(competition.id);
+      setCompetition({});
+
+      await mainApi.updateUser({
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        middleName: userData.middleName,
+        gender: userData.gender,
+        birthday: userData.birthday,
+        country: userData.country,
+        state: userData.state,
+        city: userData.city,
+      });
+      setUserData({});
+
+
+      navigate("/application-success", { replace: true });
+    }
+    catch (err) {
+      console.error(err);
+    }
   };
 
   const handleSelect = (type, value) => {
     if (type === "direction") {
       setDirection(value);
     } else if (type === "gender") {
-      setGender(value);
+      setUserData({ ...userData, gender: value });
     }
     setDropdownsOpen({ ...dropdownsOpen, [type]: false });
   };
@@ -61,6 +89,10 @@ export default function Application({ videos }) {
   const toggleDropdown = (type) => {
     setDropdownsOpen((prev) => ({ ...prev, [type]: !prev[type] }));
   };
+
+  const updateUserData = (prop, value) => {
+    setUserData({ ...userData, [prop]: value });
+  }
 
   return (
     <section className="application">
@@ -74,8 +106,9 @@ export default function Application({ videos }) {
           <input
             className="form__input"
             type="text"
-            value={competition}
-            placeholder="Видеоконкурс"
+            value={competition.name}
+            disabled={true}
+            placeholder="Событие"
             onChange={(e) => setCompetition(e.target.value)}
             required
           />
@@ -114,9 +147,9 @@ export default function Application({ videos }) {
           <input
             className="form__input"
             type="text"
-            value={firstName}
+            value={userData.firstName}
             placeholder="Имя"
-            onChange={(e) => setFirstName(e.target.value)}
+            onChange={(e) => updateUserData("firstName", e.target.value)}
             required
           />
         </div>
@@ -125,9 +158,9 @@ export default function Application({ videos }) {
           <input
             className="form__input"
             type="text"
-            value={lastName}
+            value={userData.lastName}
             placeholder="Фамилия"
-            onChange={(e) => setLastName(e.target.value)}
+            onChange={(e) => updateUserData("lastName", e.target.value)}
             required
           />
         </div>
@@ -136,9 +169,9 @@ export default function Application({ videos }) {
           <input
             className="form__input"
             type="text"
-            value={noMiddleName ? "" : middleName}
+            value={noMiddleName ? "" : userData.middleName}
             placeholder="Отчество"
-            onChange={(e) => setMiddleName(e.target.value)}
+            onChange={(e) => updateUserData("middleName", e.target.value)}
             disabled={noMiddleName}
           />
         </div>
@@ -160,7 +193,7 @@ export default function Application({ videos }) {
           onClick={() => toggleDropdown("gender")}
         >
           <div className="form__input form__input-select">
-            {gender || "Пол"}
+            {userData.gender || "Пол"}
             <img
               className="form__input-icon"
               src={icon}
@@ -186,8 +219,8 @@ export default function Application({ videos }) {
           <input
             className="form__input"
             type="date"
-            value={birthday}
-            onChange={(e) => setBirthday(e.target.value)}
+            value={userData.birthday}
+            onChange={(e) => updateUserData("birthday", e.target.value)}
             required
           />
         </div>
@@ -198,9 +231,9 @@ export default function Application({ videos }) {
           <input
             className="form__input"
             type="text"
-            value={country}
+            value={userData.country}
             placeholder="Страна"
-            onChange={(e) => setCountry(e.target.value)}
+            onChange={(e) => updateUserData("country", e.target.value)}
             required
           />
         </div>
@@ -209,9 +242,9 @@ export default function Application({ videos }) {
           <input
             className="form__input"
             type="text"
-            value={state}
+            value={userData.state}
             placeholder="Регион/Область/Край/Другое"
-            onChange={(e) => setState(e.target.value)}
+            onChange={(e) => updateUserData("state", e.target.value)}
             required
           />
         </div>
@@ -220,9 +253,9 @@ export default function Application({ videos }) {
           <input
             className="form__input"
             type="text"
-            value={city}
+            value={userData.city}
             placeholder="Город"
-            onChange={(e) => setCity(e.target.value)}
+            onChange={(e) => updateUserData("city", e.target.value)}
             required
           />
         </div>
@@ -242,9 +275,9 @@ export default function Application({ videos }) {
                 <div key={index} className="video__container">
                   <label className="form__checkbox video__checkbox">
                     <input
-                      type="radio" 
-                      checked={selectedVideoIndex === index} 
-                      onChange={() => setSelectedVideoIndex(index)} 
+                      type="radio"
+                      checked={selectedVideoIndex === index}
+                      onChange={() => setSelectedVideoIndex(index)}
                     />
                     <span className="form__checkmark video__checkmark"></span>
                   </label>
@@ -261,25 +294,23 @@ export default function Application({ videos }) {
             )}
           </div>
         </div>
-        <Link to='/application-success' className="form__application-link">
-        <button
-          className="form__button-app"
-          type="submit"
-          disabled={
-            !direction ||
-            !firstName ||
-            !lastName ||
-            !gender ||
-            !birthday ||
-            !country ||
-            !state ||
-            !city ||
-            selectedVideoIndex === null 
-          }
-        >
-          Подать заявку
-        </button>
-        </Link>
+          <button
+            className="form__button-app"
+            type="submit"
+            // disabled={
+            //   !direction ||
+            //   !userData.firstName ||
+            //   !userData.lastName ||
+            //   !userData.gender ||
+            //   !userData.birthday ||
+            //   !userData.country ||
+            //   !userData.state ||
+            //   !userData.city ||
+            //   selectedVideoIndex === null
+            // }
+          >
+            Подать заявку
+          </button>
       </form>
     </section>
   );
