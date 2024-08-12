@@ -67,7 +67,7 @@ export default function SignIn({handleLogin}) {
       </form>
       <p className="registration__text">
         <a
-          href="http://localhost:3000/registration"
+          href={`${process.env.REACT_APP_API_URL}/registration` || 'http://localhost:8080/registration'}
           className="signin__link"
         >
           Зарегистрироваться
