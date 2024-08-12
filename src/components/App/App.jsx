@@ -19,7 +19,6 @@ import ProtectedRouteElement from "../ProtectedRoute/ProtectedRoute";
 import mainApi from "../../utils/Api/MainApi";
 import auth from "../../utils/Api/AuthApi";
 import compressor from "../../utils/Helpers/Compressor";
-import { renderToStaticMarkup } from "react-dom/server";
 
 function App() {
   const navigate = useNavigate();
@@ -35,6 +34,7 @@ function App() {
     return savedVideos ? JSON.parse(savedVideos) : [];
 });
   const [userId, setUserId] = useState();
+  const [userName, setUserName] = useState("");
 
 useEffect(() => {
   handleTokenCheck();
@@ -58,8 +58,6 @@ useEffect(() => {
 
 useEffect(() => {
     // Этот эффект выполняется при загрузке компонента, для первоначального чтения
-    // const savedVideos = localStorage.getItem('videos');
-    // setVideos(savedVideos ? JSON.parse(savedVideos) : []);
     if (!userId) {
       return;
     }
@@ -123,26 +121,6 @@ useEffect(() => {
     
     return error;
   };    
-      // mainApi
-      //   .uploadVideo(formData)
-      //   .then(() => {
-      //     const newVideo = { title, url: selectedFile };
-      //     const updatedVideos = [...videos, newVideo];
-      //     setVideos(updatedVideos);
-      //     localStorage.setItem("videos", JSON.stringify(updatedVideos)); // Сохраняем в localStorage
-      //   })
-      //   .catch((err) => {
-      //     error = err;
-      //   })
-      //   .finally(() => {
-      //     // Сбрасываем состояние
-      //     setSelectedFile(null);
-      //     setTitle("");
-      //   });
-
-    //   return isSuccess ? Promise.resolve() : Promise.reject(error);
-    // }
-  // };
 
   const handleLogin = () => {
     if (!isLoggedIn) {
@@ -177,6 +155,10 @@ useEffect(() => {
     }
   };
 
+  const handleUserName = (value) => {
+    setUserName(value);
+  }
+
   return (
     <div className="App">
       <Routes>
@@ -198,8 +180,8 @@ useEffect(() => {
         <Route path="/registration" element={<Registration handleLogin={handleLogin} />} />
         <Route path="/registration-success" element={<RegistrationSuccess />} />
         <Route path="/auth" element={<SignIn handleLogin={handleLogin}  />} />
-        <Route path="/application" element={<ProtectedRouteElement element={Application} videos={videos} isLoggedIn={isLoggedIn} />} />
-        <Route path="/application-success" element={<ProtectedRouteElement element={ApplicationSuccess} isLoggedIn={isLoggedIn} />} />
+        <Route path="/application" element={<ProtectedRouteElement element={Application} videos={videos} handleUserName={handleUserName} isLoggedIn={isLoggedIn} />} />
+        <Route path="/application-success" element={<ProtectedRouteElement element={ApplicationSuccess} userName={userName} isLoggedIn={isLoggedIn}  />} />
         <Route path="/upload-video" element={
           <ProtectedRouteElement
             element={UploadVideo} 

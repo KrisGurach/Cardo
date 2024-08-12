@@ -3,7 +3,7 @@ import icon from "../../images/icon-direction-form.svg";
 import { Link, useNavigate } from "react-router-dom";
 import mainApi from "../../utils/Api/MainApi";
 
-export default function Application({ videos }) {
+export default function Application({ videos, handleUserName }) {
   const navigate = useNavigate();
 
   const [competition, setCompetition] = useState({});
@@ -149,7 +149,10 @@ export default function Application({ videos }) {
             type="text"
             value={userData.firstName}
             placeholder="Имя"
-            onChange={(e) => updateUserData("firstName", e.target.value)}
+            onChange={(e) => {
+              updateUserData("firstName", e.target.value);
+              handleUserName(e.target.value);
+            }}
             required
           />
         </div>
@@ -294,23 +297,23 @@ export default function Application({ videos }) {
             )}
           </div>
         </div>
-          <button
-            className="form__button-app"
-            type="submit"
-            // disabled={
-            //   !direction ||
-            //   !userData.firstName ||
-            //   !userData.lastName ||
-            //   !userData.gender ||
-            //   !userData.birthday ||
-            //   !userData.country ||
-            //   !userData.state ||
-            //   !userData.city ||
-            //   selectedVideoIndex === null
-            // }
-          >
-            Подать заявку
-          </button>
+        <button
+          className="form__button-app"
+          type="submit"
+          // disabled={
+          //   !direction ||
+          //   !userData.firstName ||
+          //   !userData.lastName ||
+          //   !userData.gender ||
+          //   !userData.birthday ||
+          //   !userData.country ||
+          //   !userData.state ||
+          //   !userData.city ||
+          //   selectedVideoIndex === null
+          // }
+        >
+          Подать заявку
+        </button>
       </form>
     </section>
   );
