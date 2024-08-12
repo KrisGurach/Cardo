@@ -48,6 +48,7 @@ export type TFormData = {
   data: TFieldset[]
   inputValues?: TInputValues
   defaultValues?: any
+  getValues?: () => any
 }
 
 export type TMenuPage = {

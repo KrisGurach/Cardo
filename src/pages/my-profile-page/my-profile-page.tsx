@@ -5,8 +5,11 @@ import MenuPage from "../../components/menu-page/menu-page";
 import Form from "../../components/form/form";
 import { inputValuesMock } from "../../constants/mocks";
 import { ProfileFormData } from "../../constants/constants";
+import MainApi from '../../utils/api.js';
+import { useParams } from "react-router-dom";
 
-const defaultValues = {id: 0,
+const defaultValues = {
+  id: 0,
   firstName: '',
   surname: '',
   lastName: '',
@@ -17,13 +20,17 @@ const defaultValues = {id: 0,
   portfolioUrl: '',
   country: '',
   city: '',
-  role: ''}
+  role: ''
+}
 
 const MyProfilePage:FC = () =>  {
 
+  const {id} = useParams();
+  const userData = MainApi.getUser(id);
+
   return (
     <MenuPage title="Мой профиль">
-      <Form data={ProfileFormData} inputValues={inputValuesMock} defaultValues={defaultValues}/>
+      <Form data={ProfileFormData} inputValues={userData? userData : inputValuesMock} defaultValues={defaultValues}/>
     </MenuPage>
   );
 }

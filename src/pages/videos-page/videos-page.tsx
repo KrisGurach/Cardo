@@ -3,20 +3,29 @@ import React from "react";
 import style from './style.module.css';
 import MenuPage from "../../components/menu-page/menu-page";
 import VideoElement, { TVideoData } from "../../components/video/video";
-import {removeVid, getOwnVids} from '../../utils/api.js';
+import MainApi from '../../utils/api.js';
 import { addVideoRoute } from "../../constants/routes";
 
-export type TVideosPage = {
-  videos: TVideoData[]
-}
-
-const VideosPage:FC<TVideosPage> = ({videos}) =>  {
+const VideosPage:FC = () =>  {
 
   const [currentVidsId, setCurrentVidsId] = useState<number[]>([]);
-  const [data, setOwnVids] = useState([]);
-
-  const [selectAllIsActive, setSelectAllIsActive] = useState(false);
-  const [deleteButtonIsActive, setDeleteButtonIsActieve] = useState(false);
+  const [data, setOwnVids] = useState<TVideoData[]>([  
+    {
+      id: 1,
+      title: "Видео1",
+      videoPath: 'string',
+    },
+    {
+      id: 2,
+      title: "Видео2",
+      videoPath: 'string',
+    },
+    {
+      id: 3,
+      title: "Видео3",
+      videoPath: 'string',
+    },
+  ]);
 
   const onSelectClick = (e: any) => {
     const vid =
@@ -31,13 +40,16 @@ const VideosPage:FC<TVideosPage> = ({videos}) =>  {
     console.log(currentVidsId)
   };
 
-  /*const toggleSelectAll = () => {
-    setSelectAllIsActive(!selectAllIsActive);
-  }*/
+  //Загружаем видео с сервера
+  const getAllVids = () => {
+    MainApi.getAllVideos().then((res: any) => {
+      setOwnVids(res)
+    })
+  }
 
   const handleRemoveVids = () => {
-    Promise.all(currentVidsId.map((id) => removeVid(id).catch())).then(() => {
-      getOwnVids().then((res: any) => {
+    Promise.all(currentVidsId.map((id) => MainApi.removeVid(id).catch())).then(() => {
+      MainApi.getAllVideos().then((res: any) => {
         setCurrentVidsId([]);
         setOwnVids(res);
       });
@@ -45,8 +57,8 @@ const VideosPage:FC<TVideosPage> = ({videos}) =>  {
   };
 
   useEffect(() => {
-
-  }, [selectAllIsActive, deleteButtonIsActive])
+    getAllVids();
+  }, [data, currentVidsId])
 
   return (
     <MenuPage title="Мои видео">
@@ -63,22 +75,15 @@ const VideosPage:FC<TVideosPage> = ({videos}) =>  {
         <div className={style.videos} id="videos">
           <h2 className={style.titleVideos}>Загруженные ранее:</h2>
           <div className={style.buttonsGroup}>
-            {/*<div className={style.selectAll}>
-              <button 
-              className={`${style.selectAllButton} ${selectAllIsActive && style.selectAllActive}`}
-              onClick={toggleSelectAll}
-              />
-              <p className={style.text}>Выбрать все</p>
-            </div>*/}
             <button 
-              className={`${style.deleteButton} ${(currentVidsId.length>0 || selectAllIsActive) && style.deleteActive}`} 
+              className={`${style.deleteButton} ${(currentVidsId.length>0) && style.deleteActive}`} 
               onClick={handleRemoveVids}
-              disabled={currentVidsId.length || selectAllIsActive ? false : true}
+              disabled={currentVidsId.length ? false : true}
               >
               Удалить
             </button>
           </div>
-          {videos && videos.map((vid, index) => {
+          {data && data.map((vid, index) => {
             return (
               <VideoElement key={index} onClick={onSelectClick} data={vid}></VideoElement>
             )
