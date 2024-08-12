@@ -1,7 +1,8 @@
 .navbar {
-  width: 382px;
+  width: calc(100% - 32px);
   height: 60px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   border: solid 1px black;
   border-radius: 16px;
@@ -9,10 +10,14 @@
 }
 
 .navbar__title {
+  margin-left: 16px;
   font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 .navbar__button-link {
+  margin-right: 16px;
   width: 32px;
   height: 32px;
   background-image: url(../../images/button-navbar-link.svg);
@@ -20,4 +25,8 @@
   background-size: cover; 
   background-position: center; 
   border: none;
+  cursor: pointer;
+}
+.navbar__button-link:active {
+  transform: scale(0.9);
 }

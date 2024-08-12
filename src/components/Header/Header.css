@@ -1,0 +1,35 @@
+.header {
+  height: 81px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__button {
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+}
+
+.header__button--logo {
+  width: 175px;
+  height: 40px;
+  background-image: url('../../images/header-logo.svg');
+}
+
+.header__button--logo:active {
+  transform: scale(0.9);
+}
+
+.header__button--notification {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  background-image: url('../../images/notification.svg');
+  cursor: pointer;
+}
+
+.header__button--notification:active {
+  transform: scale(0.9);
+}
