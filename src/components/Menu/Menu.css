@@ -66,3 +66,16 @@
 .menu__picture-direction_active {
   background-image: url(../../images/directions-active.svg);
 }
+
+@media screen and (max-width: 600px) {
+  .menu {
+    bottom: env(safe-area-inset-bottom); 
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  .menu {
+    bottom: env(safe-area-inset-bottom);
+  }
+}
+

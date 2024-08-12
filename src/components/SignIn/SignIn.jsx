@@ -65,7 +65,7 @@ export default function SignIn({handleLogin}) {
           Войти
         </button>
       </form>
-      <Link to='/registration'>
+      <Link to='/registration' className="registration__text">
       <p className="registration__text">
           Зарегистрироваться
       </p>

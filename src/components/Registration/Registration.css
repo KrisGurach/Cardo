@@ -101,6 +101,8 @@
   font-weight: 200;
   line-height: 1.5;
   text-align: center;
+  text-decoration: none;
+  color: var(--black-color);
 }
 
 .registration__link {
@@ -113,10 +115,13 @@
 
 .form__server-error-container {
   margin-bottom: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
   height: 137px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  text-align: center;
 }
 
 .form__server-error {

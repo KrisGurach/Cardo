@@ -293,7 +293,7 @@ export default function Application({ videos, handleUserName }) {
                 </div>
               ))
             ) : (
-              <p>Нет загруженных видео</p>
+              <p className="video__title-none">Нет загруженных видео</p>
             )}
           </div>
         </div>
