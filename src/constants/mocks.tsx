@@ -48,3 +48,5 @@ export const inputValuesMock = {
   city: "",
   role: ""
 }
+
+export const testBaseUrl = "http://51.250.32.130:8080";

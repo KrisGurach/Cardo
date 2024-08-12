@@ -1,3 +1,5 @@
+import { testBaseUrl } from "../../constants/mocks.tsx";
+
 class MainApi {
   constructor({ baseUrl }) {
     this._baseUrl = baseUrl;
@@ -108,7 +110,7 @@ class MainApi {
 }
 
 const config = {
-  baseUrl: process.env.REACT_APP_API_URL,
+  baseUrl: process.env.REACT_APP_API_URL || testBaseUrl,
 };
   
   const mainApi = new MainApi(config);

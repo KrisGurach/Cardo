@@ -30,10 +30,11 @@ import VideosPage from '../../pages/videos-page/videos-page';
 import AddVideoPage from '../../pages/add-video-page/add-video-page';
 
 function App() {
-  const navigate = useNavigate();
-  const { pathname } = useLocation();
+console.log(process.env);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const navigate = useNavigate();
+const { pathname } = useLocation();
+const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 const data = [
   {inputs: [
@@ -118,7 +119,6 @@ useEffect(() => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Submitting video:", { title, url: selectedFile }); // Логирование для проверки
 
     const inputId = 'video-upload';
     const inputElement = event.target.querySelector(`#${inputId}`);

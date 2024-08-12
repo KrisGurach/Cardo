@@ -1,3 +1,5 @@
+import { testBaseUrl } from "../../constants/mocks.tsx";
+
 class Authorization {
     constructor({ baseUrl }) {
       this._baseUrl = baseUrl;
@@ -55,7 +57,7 @@ class Authorization {
   }
   
   const config = {
-    baseUrl: process.env.REACT_APP_API_URL,
+    baseUrl: process.env.REACT_APP_API_URL || testBaseUrl,
   };
   
   const auth = new Authorization(config);
