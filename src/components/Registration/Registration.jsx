@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-no-target-blank */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../utils/Api/AuthApi';
@@ -7,26 +5,44 @@ import auth from '../../utils/Api/AuthApi';
 export default function Registration({handleLogin}) {
   const navigate = useNavigate();
 
+  const [errorMessage, setErrorMessage] = useState(
+    "При регистрации пользователя произошла ошибка."
+  );
+
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  const [hasServerError, setHasServerError] = useState(false);
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     auth.signUp({ email, password })
-    .then(() => {
-      auth.signIn(email, password)
+      .then(() => {
+        return auth.signIn(email, password); // Добавляем return для цепочки промисов
+      })
       .then(() => {
         handleLogin();
         setPassword("");
         setEmail("");
         navigate("/", { replace: true });
+      })
+      .catch((error) => {
+        console.error(error);
+        setHasServerError(true);
+        
+        // Обработка кодов ошибок
+        if (error.code === 409) {
+          setErrorMessage("Пользователь с таким email уже существует.");
+        } else {
+          setErrorMessage("Произошла ошибка. Пожалуйста, попробуйте еще раз.");
+        }
       });
-    })
-    .catch((err) => console.error(err))
   };
 
   return (
@@ -87,15 +103,18 @@ export default function Registration({handleLogin}) {
             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
           ></button>
         </div>
-        {/* <Link to="/registration-success" className="form__application-link"> */}
-          <button
-            className="form__button"
-            type="submit"
-            disabled={!email || !password || !confirmPassword}
-          >
-            Зарегистрироваться
-          </button>
-        {/* </Link> */}
+        <div className="form__server-error-container form__server-error-container_type_register">
+            {hasServerError && (
+              <span className="form__server-error">{errorMessage}</span>
+            )}
+          </div>
+        <button
+          className="form__button"
+          type="submit"
+          disabled={!email || !password || !confirmPassword}
+        >
+          Зарегистрироваться
+        </button>
       </form>
       <p className="registration__text">
         Создавая аккаунт ты соглашаешься с{" "}
@@ -103,6 +122,7 @@ export default function Registration({handleLogin}) {
           href="https://kardoaward.com/privacy-policy/"
           className="registration__link"
           target="_blank"
+          rel="noopener noreferrer"
         >
           условиями и политикой конфиденциальности.
         </a>
