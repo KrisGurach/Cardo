@@ -22,5 +22,29 @@ export const applicationCardsMock = [
     status: "зритель",
     phase: "регистрация",
     isActive: true
-  }
+  },
+  {
+    title: "Видео-конкурс",
+    startTime: "01.01.2024",
+    endingTime: "27.07.2024",
+    status: "выбыл",
+    phase: "топ-48",
+    place: 52,
+    isActive: false
+  },
 ]
+
+export const inputValuesMock = {
+  id: 0,
+  firstName: "Иван",
+  surname: "Иванов",
+  lastName: "Иванович",
+  email: "",
+  birthday: "",
+  phone: "",
+  socialMediaUrl: "",
+  portfolioUrl: "",
+  country: "РФ",
+  city: "",
+  role: ""
+}

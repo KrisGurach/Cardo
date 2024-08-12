@@ -1,20 +1,11 @@
 import { FC } from "react"
 import React from "react"
 import style from './style.module.css';
-
-export type TApplicationCard = {
-  title: string;
-  startTime: string;
-  endingTime: string;
-  status: string;
-  phase: string;
-  place?: number;
-  isActive: boolean
-}
+import { TApplicationCard } from "../types/types";
 
 const ApplicationCard:FC<TApplicationCard> = ({title, startTime, endingTime, status, phase, place, isActive}) => {
   return (
-    <div className={`${style.container} ${!isActive ? style.cardInactive : style.cardActive}`}>
+    <div className={`${style.container} ${!isActive && style.cardInactive}`}>
       <h2 className={style.title}>{title}</h2>
       <div className={style.infoContainer}>
         <div className={style.info}>
@@ -27,7 +18,7 @@ const ApplicationCard:FC<TApplicationCard> = ({title, startTime, endingTime, sta
           <p className={style.text}>Место:<span className={style.span}>{place && place}{!place && '-'}</span></p>
         </div>
       </div>
-      <div className={`${style.bottom} ${!isActive ? style.bottomInactive : style.bottomActive}`}>
+      <div className={`${style.bottom} ${!isActive && style.bottomInactive}`}>
 
       </div>
     </div>

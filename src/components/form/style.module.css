@@ -1,0 +1,39 @@
+.form {
+  margin: 0;
+  padding: 20px 16px;
+  width: 100%;
+  max-width: 382px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.fieldset {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 382px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 382px;
+  font-size: 16px;
+  color: black;
+  font-weight: bold;
+}
+
+.input {
+  margin: 0;
+  padding: 4px 16px;
+  max-width: 382px;
+  height: 56px;
+  border-radius: 16px;
+  border: black solid 1px
+}

@@ -4,19 +4,14 @@ import style from './style.module.css';
 import arrBack from '../../../images/arrow_back.svg';
 import cameraIcon from '../../../images/camera_icon.svg';
 import { Link } from "react-router-dom";
-import { mainPageLink } from "../../../constants/profile-page";
-
-type TProfileInfo = {
-  avatar?: string;
-  name: string;
-  tag: string;
-}
+import { mainPageRoute } from "../../../constants/routes";
+import { TProfileInfo } from "../../types/types";
 
 const ProfileInfo:FC<TProfileInfo> = ({avatar, name, tag}) =>  {
   return (
     <div className={style.container}>
       <div className={style.actions}>
-        <Link to={mainPageLink} className={style.back}>
+        <Link to={mainPageRoute} className={style.back}>
           <img src={arrBack} alt='Назад'/>
         </Link>
         <button type="button" className={style.addButton}>

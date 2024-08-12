@@ -3,7 +3,7 @@
   padding: 0;
   width: 100%;
   max-width: 184px;
-  max-height: 280px;
+  height: 280px;
   border: orangered solid 1px;
   border-radius: 16px;
   position: relative;
@@ -11,10 +11,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-}
-
-.cardActive {
-  border-color: orangered;
 }
 
 .cardInactive {
@@ -74,10 +70,6 @@
   background-color: orangered;
   border-bottom-right-radius: 16px;
   border-bottom-left-radius: 16px;
-}
-
-.bottomActive {
-  background-color: orangered;
 }
 
 .bottomInactive {

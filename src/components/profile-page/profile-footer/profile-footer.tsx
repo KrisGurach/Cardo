@@ -5,7 +5,7 @@ import yt from '../../../images/cbi_youtube-alt.svg';
 import vk from '../../../images/ri_vk-fill.svg';
 import tg from '../../../images/uil_telegram.svg'
 import SocialItem from '../social-item/social-item';
-import { tgLink, vkLink, ytLink } from "../../../constants/profile-page";
+import { tgLink, vkLink, ytLink } from "../../../constants/constants";
 
 const ProfileFooter:FC = () =>  {
   return (
