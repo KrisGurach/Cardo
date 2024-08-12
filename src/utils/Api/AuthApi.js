@@ -55,7 +55,7 @@ class Authorization {
   }
   
   const config = {
-    baseUrl: process.env.REACT_APP_API_URL || 'http://localhost:8080',
+    baseUrl: process.env.REACT_APP_API_URL,
   };
   
   const auth = new Authorization(config);
