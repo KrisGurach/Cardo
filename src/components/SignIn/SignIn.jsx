@@ -1,8 +1,5 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { useState } from "react";
-import vkIcon from '../../images/icon-vk.svg';
-import googleIcon from '../../images/icon-google.svg';
-import appleIcon from '../../images/icon-apple.svg';
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../utils/Api/AuthApi";
 
@@ -72,7 +69,6 @@ export default function SignIn({handleLogin}) {
         <a
           href="http://localhost:3000/registration"
           className="signin__link"
-          // target="_blank"
         >
           Зарегистрироваться
         </a>

@@ -1,9 +1,7 @@
 import { useState } from "react";
 import Modal from "../Modal/Modal";
-// import { useLocation } from "react-router-dom";
 
 export default function Navbar({ title, description, hiddenSection, handleHiddenMenu }) {
-  // const { pathname } = useLocation();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 

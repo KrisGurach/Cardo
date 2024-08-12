@@ -15,7 +15,6 @@ export default function UploadVideo({
     e.preventDefault();
     setLoading(true);
     
-      // Здесь handleSubmit для загрузки
       try {
         const error = await handleSubmit(e);
 
@@ -68,7 +67,6 @@ export default function UploadVideo({
             </div>
           ) : (
             <div className="video-preview">
-              {/* <p className="video-preview__text">Загрузи свое крутое видео</p> */}
             </div>
           )}
         </div>

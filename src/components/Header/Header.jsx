@@ -3,8 +3,6 @@ import './Header.css';
 import { useState } from 'react';
 import Notification from '../Notification/Notification';
 
-//добавить измнение иконки если получил уведомление и написать соот.функцию
-
 export default function Header() {
     const [isNotificationOpen, setIsNotificationOpen] = useState(false); 
     const handleNotificationClick = () => {

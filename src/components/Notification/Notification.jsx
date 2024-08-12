@@ -11,7 +11,6 @@ export default function Notification({ onClose }) {
       </div>
       <div className="notification__container">
         <div className="notification__container-box">
-          {/* Захардкожено! Подвязать уведомления*/}
           <div className="notification__container-box-flex">
             <h3 className="notification__box-title">Видео-заявка</h3>
             <p className="notification__box-data">3 дня назад</p>
@@ -21,7 +20,6 @@ export default function Notification({ onClose }) {
             мероприятия
           </p>
         </div>
-        {/* Подвязать функцию удаления */}
         <button className="notification__button-clean"></button>
       </div>
     </div>

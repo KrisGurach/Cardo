@@ -22,7 +22,6 @@ export default function Main() {
         <p className="main__title">
           Открыта регистрация на национальные и региональные этапы
         </p>
-        {/* <Link to="/registration"> */}
         <Link to="/application">
           <button type="button" className="main__button-login">
             Зарегистрироваться
