@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import Item from "../Item/Item";
 import Menu from "../Menu/Menu";
+import { profileRoute } from "../../constants/routes";
 
 export default function Directions() {
   return (
     <div className="directions">
       <div className="directions__header">
-        <Link to="/account">  
+        <Link to={profileRoute}>  
           <button className="directions__button-account"></button>  
         </Link>
         <h3 className="directions__title">Направления</h3>  

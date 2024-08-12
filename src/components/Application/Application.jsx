@@ -300,17 +300,17 @@ export default function Application({ videos, handleUserName }) {
         <button
           className="form__button-app"
           type="submit"
-          // disabled={
-          //   !direction ||
-          //   !userData.firstName ||
-          //   !userData.lastName ||
-          //   !userData.gender ||
-          //   !userData.birthday ||
-          //   !userData.country ||
-          //   !userData.state ||
-          //   !userData.city ||
-          //   selectedVideoIndex === null
-          // }
+          disabled={
+            !direction ||
+            !userData.firstName ||
+            !userData.lastName ||
+            !userData.gender ||
+            !userData.birthday ||
+            !userData.country ||
+            !userData.state ||
+            !userData.city ||
+            selectedVideoIndex === null
+          }
         >
           Подать заявку
         </button>

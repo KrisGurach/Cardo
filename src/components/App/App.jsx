@@ -207,31 +207,111 @@ useEffect(() => {
             }
           />
         ))}
-        <Route path="/registration" element={<Registration handleLogin={handleLogin} />} />
+        <Route
+          path="/registration"
+          element={<Registration handleLogin={handleLogin} />}
+        />
         <Route path="/registration-success" element={<RegistrationSuccess />} />
-        <Route path="/auth" element={<SignIn handleLogin={handleLogin}  />} />
-        <Route path="/application" element={<ProtectedRouteElement element={Application} videos={videos} handleUserName={handleUserName} isLoggedIn={isLoggedIn} />} />
-        <Route path="/application-success" element={<ProtectedRouteElement element={ApplicationSuccess} userName={userName} isLoggedIn={isLoggedIn}  />} />
-        <Route path="/upload-video" element={
-          <ProtectedRouteElement
-            element={UploadVideo} 
-            title={title}
-            setTitle={setTitle}
-            videos={videos} 
-            setVideos={setVideos}  
-            handleFileChange={handleFileChange} 
-            handleSubmit={handleSubmit} 
-            selectedFile={selectedFile} 
-            setSelectedFile={setSelectedFile} 
-            isLoggedIn={isLoggedIn}
-          />
-        } />
-        <Route path={profileRoute} element={<ProfilePage/>}/>
-        <Route path={eventsRoute} element={<EventsPage cards={applicationCardsMock}/>}/>
-        <Route path={myProfileRoute} element={<MyProfilePage/>}/>
-        <Route path={settingsRoute} element={<SettingsPage/>}/>
-        <Route path={videosRoute} element={<VideosPage videos={videos}/>}/>
-        <Route path={addVideoRoute} element={<AddVideoPage data={data} handleFileChange={handleFileChange} selectedFile={selectedFile} handleSubmit={handleSubmit}/>}/>
+        <Route path="/auth" element={<SignIn handleLogin={handleLogin} />} />
+        <Route
+          path="/application"
+          element={
+            <ProtectedRouteElement
+              element={Application}
+              videos={videos}
+              handleUserName={handleUserName}
+              isLoggedIn={isLoggedIn}
+            />
+          }
+        />
+        <Route
+          path="/application-success"
+          element={
+            <ProtectedRouteElement
+              element={ApplicationSuccess}
+              userName={userName}
+              isLoggedIn={isLoggedIn}
+            />
+          }
+        />
+        <Route
+          path="/upload-video"
+          element={
+            <ProtectedRouteElement
+              element={UploadVideo}
+              title={title}
+              setTitle={setTitle}
+              videos={videos}
+              setVideos={setVideos}
+              handleFileChange={handleFileChange}
+              handleSubmit={handleSubmit}
+              selectedFile={selectedFile}
+              setSelectedFile={setSelectedFile}
+              isLoggedIn={isLoggedIn}
+            />
+          }
+        />
+        
+        <Route
+          path={profileRoute}
+          element={
+            <ProtectedRouteElement
+              element={ProfilePage}
+              isLoggedIn={isLoggedIn}
+            />
+          }
+        />
+        <Route
+          path={eventsRoute}
+          element={
+            <ProtectedRouteElement
+              element={EventsPage}
+              cards={applicationCardsMock}
+              isLoggedIn={isLoggedIn}
+            />
+          }
+        />
+        <Route
+          path={myProfileRoute}
+          element={
+            <ProtectedRouteElement
+              element={MyProfilePage}
+              isLoggedIn={isLoggedIn}
+            />
+          }
+        />
+        <Route
+          path={settingsRoute}
+          element={
+            <ProtectedRouteElement
+              element={SettingsPage}
+              isLoggedIn={isLoggedIn}
+            />
+          }
+        />
+        <Route
+          path={videosRoute}
+          element={
+            <ProtectedRouteElement
+              element={VideosPage} 
+              videos={videos}
+              isLoggedIn={isLoggedIn}
+            />
+          }
+        />
+        <Route
+          path={addVideoRoute}
+          element={
+            <ProtectedRouteElement
+              element={AddVideoPage}
+              data={data}
+              handleFileChange={handleFileChange}
+              selectedFile={selectedFile}
+              handleSubmit={handleSubmit}
+              isLoggedIn={isLoggedIn}
+            />
+          }
+        />
       </Routes>
     </div>
   );
