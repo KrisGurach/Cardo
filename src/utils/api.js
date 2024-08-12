@@ -100,7 +100,7 @@ class MainApi {
 }
 
 const config = {
-baseUrl: "http://51.250.32.130:8080",
+baseUrl: process.env.REACT_APP_API_URL || 'http://localhost:8080',
 };
 
 const mainApi = new MainApi(config);
