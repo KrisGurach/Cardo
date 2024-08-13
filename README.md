@@ -1,11 +1,13 @@
 # Запуск прод билд и дев-режима
+Склонировать репозиторий https://github.com/KrisGurach/Cardo
+Выполнить следующие команды: npm i, затем npm start 
 
 ## Сведения о команде: 
-Два фронтэнд-разработчика Кристина и Данила
+Два фронтэнд-разработчика: Кристина и Данила
 
 ### Ссылка на задеплоинное приложение
-
+http://51.250.32.130:3000
 
 #### Используемый стек технологий
-HTML, CSS, React, react-youtube, slick-carousel
+HTML, CSS, React, JavaScript, Typescript, react-youtube, slick-carousel
 
