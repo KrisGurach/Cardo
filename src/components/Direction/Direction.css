@@ -1,0 +1,37 @@
+.direction__back-button {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 20px;
+  left: 16px;
+  background-color: transparent;
+  background-image: url(../../images/button-notification-close.svg);
+  background-size: cover;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.direction__back-button:active {
+  transform: scale(0.9);
+}
+
+.direction__image {
+  width: 100%;
+}
+
+.direction__text {
+  margin: 16px 16px 0;  
+  font-size: 14px;
+  font-weight: 200;
+  line-height: 1.4;
+}
+
+.direction__container {  
+  margin: 16px 16px 10px;
+}
+
+.title_gray {
+  color: var(--grey-dark-color);
+}

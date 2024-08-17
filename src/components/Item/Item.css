@@ -1,0 +1,27 @@
+.item {
+  margin-top: 16px;
+  width: 183px;
+  height: 178px;
+  color: var(--black-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  background-color: var(--grey-medium-color);
+  border: solid 1px var(--orange-color);
+  border-radius: 16px;
+}
+  
+.item-image {
+  max-width: 152px;
+  align-self: center;
+}
+  
+.item-title {
+  margin: 0;
+  margin-left: 16px;  
+  align-self: flex-start; 
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5; 
+  text-transform: uppercase;
+}

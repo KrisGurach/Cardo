@@ -1,0 +1,12 @@
+.signin__button {
+  margin-bottom: 16px;
+}
+
+.signin__link { 
+  margin: 0;   
+  color: var(--light-grey-color);  
+  font-size: 12px;
+  font-weight: 200;
+  line-height: 1.5;
+  text-decoration: none;
+}
